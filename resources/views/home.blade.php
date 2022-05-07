@@ -1,5 +1,10 @@
 @extends('layouts.tabs')
 
+@section('title', 'Home • OnSport')
+
+@section('stylehighlighttab_home', 'background-color: #d6d6d6')
+@section('stylecolortext_home', 'black')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

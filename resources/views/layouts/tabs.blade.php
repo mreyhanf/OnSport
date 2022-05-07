@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>OnSport</title>
+    <title>@yield('title')</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
@@ -84,11 +84,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarmain">
                     <ul class="navbar-nav justify-content-center mx-auto">
-                        <li class="nav-item active" style="margin-right: 40px"><a class="nav-link" href="" style="color: white">Home</a></li>
-                        <li class="nav-item"  style="margin-right: 40px; margin-left: 40px"><a class="nav-link" href="" style="color: white">My Events</a></li>
-                        <li class="nav-item" style="margin-right: 40px; margin-left: 40px"><a class="nav-link" href="" style="color: white">Browse</a></li>
-                        <li class="nav-item" style="margin-right: 40px; margin-left: 40px"><a class="nav-link" href="" style="color: white">Notifications</a></li>
-                        <li class="nav-item" style="margin-left: 40px"><a class="nav-link" href="" style="color: white">Profile</a></li>
+                        <li class="nav-item active" style="margin-right: 40px; @yield('stylehighlighttab_home')"><a class="nav-link" href="" style="color: @yield('stylecolortext_home')">Home</a></li>
+                        <li class="nav-item"  style="margin-right: 40px; margin-left: 40px; @yield('stylehighlighttab_myevents')"><a class="nav-link" href="" style="color: @yield('stylecolortext_myevents')">My Events</a></li>
+                        <li class="nav-item" style="margin-right: 40px; margin-left: 40px; @yield('stylehighlighttab_browse')"><a class="nav-link" href="" style="color: @yield('stylecolortext_browse')">Browse</a></li>
+                        <li class="nav-item" style="margin-right: 40px; margin-left: 40px; @yield('stylehighlighttab_notifications')"><a class="nav-link" href="" style="color: @yield('stylecolortext_notifications')">Notifications</a></li>
+                        <li class="nav-item" style="margin-left: 40px; @yield('stylehighlighttab_profile')"><a class="nav-link" href="" style="color: @yield('stylecolortext_profile')">Profile</a></li>
                     </ul>
                 </div>
             </div>
