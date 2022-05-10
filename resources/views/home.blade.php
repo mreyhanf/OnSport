@@ -3,6 +3,7 @@
 @section('title', 'Home • OnSport')
 
 @section('stylehighlighttab_home', 'background-color: #d6d6d6')
+@section('activenav_home', 'active')
 @section('stylecolortext_home', 'black')
 @section('stylecolortext_myevents', 'white')
 @section('stylecolortext_browse', 'white')

@@ -84,11 +84,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarmain">
                     <ul class="navbar-nav justify-content-center mx-auto">
-                        <li class="nav-item active" style="margin-right: 40px; @yield('stylehighlighttab_home')"><a class="nav-link" href="/home" style="color: @yield('stylecolortext_home')">Home</a></li>
-                        <li class="nav-item"  style="margin-right: 40px; margin-left: 40px; @yield('stylehighlighttab_myevents')"><a class="nav-link" href="/myevents/created" style="color: @yield('stylecolortext_myevents')">My Events</a></li>
-                        <li class="nav-item" style="margin-right: 40px; margin-left: 40px; @yield('stylehighlighttab_browse')"><a class="nav-link" href="" style="color: @yield('stylecolortext_browse')">Browse</a></li>
-                        <li class="nav-item" style="margin-right: 40px; margin-left: 40px; @yield('stylehighlighttab_notifications')"><a class="nav-link" href="" style="color: @yield('stylecolortext_notifications')">Notifications</a></li>
-                        <li class="nav-item" style="margin-left: 40px; @yield('stylehighlighttab_profile')"><a class="nav-link" href="" style="color: @yield('stylecolortext_profile')">Profile</a></li>
+                        <li class="nav-item px-4 @yield('activenav_home')" style="@yield('stylehighlighttab_home')"><a class="nav-link" href="/home" style="color: @yield('stylecolortext_home')">Home</a></li>
+                        <li class="nav-item px-4 @yield('activenav_myevents')"  style="@yield('stylehighlighttab_myevents')"><a class="nav-link" href="/myevents/created" style="color: @yield('stylecolortext_myevents')">My Events</a></li>
+                        <li class="nav-item px-4 @yield('activenav_browse')" style="@yield('stylehighlighttab_browse')"><a class="nav-link" href="" style="color: @yield('stylecolortext_browse')">Browse</a></li>
+                        <li class="nav-item px-4 @yield('activenav_notifications')" style="@yield('stylehighlighttab_notifications')"><a class="nav-link" href="" style="color: @yield('stylecolortext_notifications')">Notifications</a></li>
+                        <li class="nav-item px-4 @yield('activenav_profile')" style="@yield('stylehighlighttab_profile')"><a class="nav-link" href="" style="color: @yield('stylecolortext_profile')">Profile</a></li>
                     </ul>
                 </div>
             </div>
