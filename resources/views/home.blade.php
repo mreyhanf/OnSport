@@ -4,6 +4,10 @@
 
 @section('stylehighlighttab_home', 'background-color: #d6d6d6')
 @section('stylecolortext_home', 'black')
+@section('stylecolortext_myevents', 'white')
+@section('stylecolortext_browse', 'white')
+@section('stylecolortext_notifications', 'white')
+@section('stylecolortext_profile', 'white')
 
 @section('content')
 <div class="container">
