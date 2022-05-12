@@ -1,6 +1,6 @@
 @extends('layouts.tabs')
 
-@section('title', 'My Events')
+@section('title', 'My Events • OnSport')
 
 @section('stylehighlighttab_myevents', 'background-color: #d6d6d6')
 @section('activenav_myevents', 'active')
@@ -29,4 +29,167 @@
     </div>
     </div>
 </nav>
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-sm-12 col-lg-4">
+            <div class="card">
+                <a href="">
+                    <img class="card-img-top" src="/events_image/Screenshot.png" alt="" width="348px">
+                </a>
+                <div class="card-body">
+                    <a href=""><h5 class="card-title" style="color: rgb(0, 0, 0)">Judul Event Panjang Max Berapa Ya HAHAHAHHAHAHAHHA</h5></a>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Kategori: Bulu tangkis</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Tanggal: 26-06-2022</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Slot: 0/3</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Level Keahlian: All</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <div class="card">
+                <a href="">
+                    <img class="card-img-top" src="/events_image/Screenshot.png" alt="">
+                </a>
+                <div class="card-body">
+                    <a href=""><h5 class="card-title">Judul Event Panjang Max Berapa Ya A</h5></a>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Kategori: Bulu tangkis</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Tanggal: 26-06-2022</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Slot: 0/3</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Level Keahlian: All</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <div class="card">
+                <a href="">
+                    <img class="card-img-top" src="/events_image/Screenshot.png" alt="">
+                </a>
+                <div class="card-body">
+                    <a href=""><h5 class="card-title">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</h5></a>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Kategori: Bulu tangkis</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Tanggal: 26-06-2022</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Slot: 0/3</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Level Keahlian: All</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-sm-12 col-lg-4">
+            <div class="card">
+                <a href="">
+                    <img class="card-img-top" src="" alt="">
+                </a>
+                <div class="card-body">
+                    <a href=""><h5 class="card-title">Judul Event Panjang Max Berapa Ya</h5></a>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Kategori: Bulu tangkis</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Tanggal: 26-06-2022</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Slot: 0/3</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Level Keahlian: All</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <div class="card">
+                <a href="">
+                    <img class="card-img-top" src="" alt="">
+                </a>
+                <div class="card-body">
+                    <a href=""><h5 class="card-title">Judul Event Panjang Max Berapa Ya</h5></a>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Kategori: Bulu tangkis</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Tanggal: 26-06-2022</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Slot: 0/3</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Level Keahlian: All</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <div class="card">
+                <a href="">
+                    <img class="card-img-top" src="" alt="">
+                </a>
+                <div class="card-body">
+                    <a href=""><h5 class="card-title">Judul Event Panjang Max Berapa Ya</h5></a>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Kategori: Bulu tangkis</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Tanggal: 26-06-2022</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Slot: 0/3</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Level Keahlian: All</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

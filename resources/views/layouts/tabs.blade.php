@@ -78,7 +78,7 @@
         <nav class="navbar navbar-expand-lg navigation navbar-light bg-dark shadow-sm" id="navbar">
             <div class="container">
 
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation" style="border-color: white; background:white">
+                <button class="navbar-toggler collapsed ml-4" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation" style="border-color: white; background:white">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
