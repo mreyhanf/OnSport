@@ -21,9 +21,9 @@
     <div class="collapse navbar-collapse" id="navbarMyEvents">
         <div class="navbar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item px-2"><a class="nav-link" href="/myevents/created">Created</a></li>
-                <li class="nav-item px-2"><a class="nav-link" href="/myevents/joined" >Joined</a></li>
-                <li class="nav-item active px-2" style="background-color: rgb(170, 170, 170)"><a class="nav-link" href="#">Requested</a></li>
+                <li class="nav-item px-2"><a class="nav-link" href="/myevents/created" style="border-radius: 20px; text-align: center">Created</a></li>
+                <li class="nav-item px-2"><a class="nav-link" href="/myevents/joined" style="border-radius: 20px; text-align: center">Joined</a></li>
+                <li class="nav-item active px-2" style="background-color: rgb(170, 170, 170); border-radius: 20px; text-align: center"><a class="nav-link" href="#"><strong>Requested</strong></a></li>
             </ul>
         </div>
     </div>
@@ -31,165 +31,87 @@
 </nav>
 
 <div class="container">
-    <div class="row mb-4">
-        <div class="col-sm-12 col-lg-4">
-            <div class="card">
-                <a href="">
-                    <img class="card-img-top" src="/events_image/Screenshot.png" alt="" width="348px">
-                </a>
-                <div class="card-body">
-                    <a href=""><h5 class="card-title" style="color: rgb(0, 0, 0)">Judul Event Panjang Max Berapa Ya HAHAHAHHAHAHAHHA</h5></a>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Kategori: Bulu tangkis</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Tanggal: 26-06-2022</small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Slot: 0/3</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Level Keahlian: All</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-lg-4">
-            <div class="card">
-                <a href="">
-                    <img class="card-img-top" src="/events_image/Screenshot.png" alt="">
-                </a>
-                <div class="card-body">
-                    <a href=""><h5 class="card-title">Judul Event Panjang Max Berapa Ya A</h5></a>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Kategori: Bulu tangkis</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Tanggal: 26-06-2022</small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Slot: 0/3</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Level Keahlian: All</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-lg-4">
-            <div class="card">
-                <a href="">
-                    <img class="card-img-top" src="/events_image/Screenshot.png" alt="">
-                </a>
-                <div class="card-body">
-                    <a href=""><h5 class="card-title">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</h5></a>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Kategori: Bulu tangkis</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Tanggal: 26-06-2022</small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Slot: 0/3</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Level Keahlian: All</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    @if ($events->isEmpty()) <!-- ($events->isEmpty()) -->
+    <div style="padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);">
+        <span style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
     </div>
-    <div class="row mb-4">
-        <div class="col-sm-12 col-lg-4">
-            <div class="card">
-                <a href="">
-                    <img class="card-img-top" src="" alt="">
-                </a>
-                <div class="card-body">
-                    <a href=""><h5 class="card-title">Judul Event Panjang Max Berapa Ya</h5></a>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Kategori: Bulu tangkis</small>
+
+@endif
+@if ($events->isNotEmpty()) <!-- ($events->isNotEmpty()) -->
+    @php
+    $carddeckamount = ceil($events->count() / 3); // jumlah card-deck atau baris
+    for ($i = 1; $i <= $carddeckamount; $i++) {
+        $eventsindex = 0;
+        $lasteventsindex = $events->count() - 1;
+        echo '<div class="row card-deck mb-4">';
+        for ($j = $eventsindex; $j <= $eventsindex + 2 && $j <= $lasteventsindex; $j++) {
+            // card deck consisting of 3 cards max
+
+
+                echo '<div class="col-sm-12 col-lg-4">
+                <div class="card">
+                    <a href="">
+                        <img class="card-img-top" src="/' . $events[$j]->gambar . '" alt="">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" style="letter-spacing: 0.2px; font-weight: bolder"><a href="" style="text-decoration: none; color: rgb(29, 153, 255)">' . $events[$j]->judulevent . '</a></h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <small>Kategori: ' . $events[$j]->kategori . '</small>
+                            </div>
+                            <div class="col-6">
+                                <small>Tanggal: ' . date('d-m-Y', strtotime($events[$j]->tanggal)) . '</small>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <small>Tanggal: 26-06-2022</small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Slot: 0/3</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Level Keahlian: All</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-lg-4">
-            <div class="card">
-                <a href="">
-                    <img class="card-img-top" src="" alt="">
-                </a>
-                <div class="card-body">
-                    <a href=""><h5 class="card-title">Judul Event Panjang Max Berapa Ya</h5></a>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Kategori: Bulu tangkis</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Tanggal: 26-06-2022</small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Slot: 0/3</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Level Keahlian: All</small>
+                        <div class="row">
+                            <div class="col-6">
+                                <small>Slot: ' . $jumlahpartisipan[$j] . '/' . $events[$j]->kuotapartisipan . '</small>
+                            </div>
+                            <div class="col-6">
+                                <small>Level Keahlian: ' . $events[$j]->levelkeahlian . '</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-lg-4">
-            <div class="card">
-                <a href="">
-                    <img class="card-img-top" src="" alt="">
-                </a>
-                <div class="card-body">
-                    <a href=""><h5 class="card-title">Judul Event Panjang Max Berapa Ya</h5></a>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Kategori: Bulu tangkis</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Tanggal: 26-06-2022</small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <small>Slot: 0/3</small>
-                        </div>
-                        <div class="col-6">
-                            <small>Level Keahlian: All</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div>';
+
+            $eventsindex++;
+        }
+        echo '</div>';
+    }
+    @endphp
+@endif
+
 </div>
+
+
+<script>
+    const collection_card_title = document.getElementsByClassName("card-title");
+    for (let i = 0; i < collection_card_title.length; i++) {
+        collection_card_title[i].addEventListener('mouseover', event => {
+            const {target} = event;
+            mouseoverChild(target);
+        });
+
+        collection_card_title[i].addEventListener('mouseout', event => {
+            const {target} = event;
+            mouseoutChild(target);
+        });
+
+        function mouseoverChild(element){
+            element.style.color = 'rgb(0, 89, 206)';
+        }
+
+        function mouseoutChild(element){
+            element.style.color = 'rgb(29, 153, 255)';
+        }
+    }
+</script>
 @endsection
