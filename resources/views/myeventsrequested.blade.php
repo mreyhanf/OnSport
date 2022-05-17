@@ -47,18 +47,17 @@
 @if ($events->isNotEmpty()) <!-- ($events->isNotEmpty()) -->
     @php
     $carddeckamount = ceil($events->count() / 3); // jumlah card-deck atau baris
+    $eventsindex = 0;
+    $lasteventsindex = $events->count() - 1;
     for ($i = 1; $i <= $carddeckamount; $i++) {
-        $eventsindex = 0;
-        $lasteventsindex = $events->count() - 1;
         echo '<div class="row card-deck mb-4">';
         for ($j = $eventsindex; $j <= $eventsindex + 2 && $j <= $lasteventsindex; $j++) {
             // card deck consisting of 3 cards max
-
-
-                echo '<div class="col-sm-12 col-lg-4">
-                <div class="card">
+                $gambar = $events[$j]->gambar == "" ? "events_image/events_placeholder.png" :  $events[$j]->gambar;
+                echo '<div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card" style="min-height: 365px">
                     <a href="">
-                        <img class="card-img-top" src="/' . $events[$j]->gambar . '" alt="">
+                        <img class="card-img-top" src="/' . $gambar . '" alt="" height="178">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title" style="letter-spacing: 0.2px; font-weight: bolder"><a href="" style="text-decoration: none; color: rgb(29, 153, 255)">' . $events[$j]->judulevent . '</a></h5>
@@ -75,16 +74,15 @@
                                 <small>Slot: ' . $jumlahpartisipan[$j] . '/' . $events[$j]->kuotapartisipan . '</small>
                             </div>
                             <div class="col-6">
-                                <small>Level Keahlian: ' . $events[$j]->levelkeahlian . '</small>
+                                <small>Level: ' . $events[$j]->levelkeahlian . '</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 </div>';
-
-            $eventsindex++;
         }
         echo '</div>';
+        $eventsindex += 3;
     }
     @endphp
 @endif
