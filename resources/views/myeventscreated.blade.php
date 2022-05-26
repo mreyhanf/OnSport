@@ -21,9 +21,9 @@
     <div class="collapse navbar-collapse" id="navbarMyEvents">
         <div class="navbar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active px-2" style="background-color: rgb(170, 170, 170); border-radius: 20px; text-align: center"><a class="nav-link" href="#" style="color: black"><strong>Created</strong></a></li>
-                <li class="nav-item px-2"><a class="nav-link" href="/myevents/joined" style="border-radius: 20px; text-align: center">Joined</a></li>
-                <li class="nav-item px-2"><a class="nav-link" href="/myevents/requested" style="border-radius: 20px; text-align: center">Requested</a></li>
+                <li class="nav-item active px-2 rounded-pill" style="background-color: rgb(170, 170, 170); text-align: center"><a class="nav-link" href="#" style="color: black"><strong>Created</strong></a></li>
+                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/myevents/joined" style="text-align: center">Joined</a></li>
+                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/myevents/requested" style="text-align: center">Requested</a></li>
             </ul>
         </div>
     </div>
@@ -57,11 +57,11 @@
                 $judul = strlen($events[$j]->judulevent) > 26 ? substr($events[$j]->judulevent, 0, 26) . "..." : $events[$j]->judulevent;
                 echo '<div class="col-sm-12 col-xl-4">
                 <div class="card" style="min-height: 322px; max-width: 400px; min-width: 200px">
-                    <a href="">
+                    <a href="/event/details/' . $events[$j]->idevent . '">
                         <img class="card-img-top" src="/' . $gambar . '" alt="" height="178">
                     </a>
                     <div class="card-body">
-                        <h5 class="card-title" style="letter-spacing: 0.2px; font-weight: bolder"><a href="" style="text-decoration: none; color: rgb(29, 153, 255)">' . $judul . '</a></h5>
+                        <h5 class="card-title" style="letter-spacing: 0.2px; font-weight: bolder"><a href="/event/details/' . $events[$j]->idevent . '" style="text-decoration: none; color: rgb(29, 153, 255)">' . $judul . '</a></h5>
                         <div class="row">
                             <div class="col-6">
                                 <small>Kategori: ' . $events[$j]->kategori . '</small>

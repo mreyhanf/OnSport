@@ -18,7 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//My Events routes
 Route::get('/myevents', 'MyEventsController@index_created');
 Route::get('/myevents/created', 'MyEventsController@index_created');
 Route::get('/myevents/joined', 'MyEventsController@index_joined');
 Route::get('/myevents/requested', 'MyEventsController@index_requested');
+
+//Event details routes
+Route::get('/event/details/{idevent}', 'EventController@index');
