@@ -54,9 +54,9 @@
         for ($j = $eventsindex; $j <= $eventsindex + 2 && $j <= $lasteventsindex; $j++) {
             // card deck consisting of 3 cards max
                 $gambar = $events[$j]->gambar == "" ? "events_image/events_placeholder.png" :  $events[$j]->gambar;
-                $judul = strlen($events[$j]->judulevent) > 26 ? substr($events[$j]->judulevent, 0, 26) . "..." : $events[$j]->judulevent;
+                $judul = strlen($events[$j]->judulevent) > 21 ? substr($events[$j]->judulevent, 0, 21) . "..." : $events[$j]->judulevent;
                 echo '<div class="col-sm-12 col-xl-4">
-                <div class="card" style="min-height: 322px; max-width: 400px; min-width: 200px">
+                <div class="card" style="min-height: 324px; max-width: 400px; min-width: 200px">
                     <a href="/event/details/' . $events[$j]->idevent . '">
                         <img class="card-img-top" src="/' . $gambar . '" alt="" height="178">
                     </a>

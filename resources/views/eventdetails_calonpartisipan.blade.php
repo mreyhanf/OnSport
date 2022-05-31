@@ -14,11 +14,15 @@
     </div>
     <div class="col-sm-12 col-md-4">
         <div class="row" style="padding-top: 3px">
-            <div class="col-sm-12 col-lg-6">
+            <div class="col-md-2">
             </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
 
+            </div>
             <div class="col-sm-12 col-md-12 col-lg-6">
-                <button type="button" class="btn btn-danger rounded-pill" style="width: 160px">Cancel join request</button>
+                <a href="/event/{{ $ed->idevent }}/canceljoinreq/random" class="btn btn-danger rounded-pill" style="width: 153px">
+                    Cancel join request
+                </a>
             </div>
         </div>
     </div>
@@ -37,14 +41,14 @@
     </div>
 
     @php
-        $gambarhost = $host[0]->gambar == "" ? "events_image/events_placeholder.png" :  $host[0]->gambar;
+        $gambarhost = $host[0]->gambar == "" ? "users_image/userprofile_placeholder3.png" :  $host[0]->gambar;
     @endphp
 
     <div>
-        <a href="" class="mr-3" style="color: white; text-decoration: none">
+        <a href="/user/{{ $host[0]->username }}" class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarhost }}" alt="" width="70px" class="rounded-circle">
         </a>
-        <a href="" style="color: black; text-decoration: none">
+        <a href="/user/{{ $host[0]->username }}" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                     {{'@' . $host[0]->username . ' - ' . $host[0]->name }}
             </span>
@@ -158,7 +162,7 @@
 <hr>
 
 <!-- partisipan -->
-<h4 style="margin-bottom: 30px">Participants</h4>
+<h4 style="margin-bottom: 30px">Participants: {{count($userpartisipan)}}</h4>
 @if (count($userpartisipan) == 0)
     <div class="d-flex justify-content-center">
         <span class="p-4" style="font-size: 20px; color: rgb(88, 88, 88)">No participants yet</span>
@@ -168,27 +172,23 @@
 @if (count($userpartisipan) > 0)
 @foreach ($userpartisipan as $up)
 @php
-    $gambarpartisipan = $up->gambar == "" ? "events_image/events_placeholder.png" :  $up->gambar;
+    $gambarpartisipan = $up->gambar == "" ? "users_image/userprofile_placeholder3.png" :  $up->gambar;
 @endphp
 <div class="row mb-4">
-    <div class="col-sm-12 col-md-10">
-        <a href="" class="mr-3" style="color: white; text-decoration: none">
+    <div class="col-sm-12">
+        <a href="/user/{{ $up->username }}" class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarpartisipan }}" alt="" width="70px" class="rounded-circle">
         </a>
-        <a href="" style="color: black; text-decoration: none">
+        <a href="/user/{{ $up->username }}" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                     {{'@' . $up->username . ' - ' . $up->name }}
             </span>
         </a>
     </div>
-    <div class="col-sm-12 col-md-2">
-
-    </div>
 </div>
 
 @endforeach
 @endif
-
 
 @endforeach
 

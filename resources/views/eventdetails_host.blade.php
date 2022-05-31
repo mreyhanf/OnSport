@@ -17,14 +17,24 @@
             <div class="col-md-2">
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5">
-                <button type="button" class="btn btn-primary rounded-pill" style="width: 109px; margin-bottom: 5px">Edit event</button>
+                <a href="" class="btn btn-primary rounded-pill" style="width: 109px; margin-bottom: 5px">
+                    Edit event
+                </a>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5">
-                <button type="button" class="btn btn-danger rounded-pill" style="width: 109px">Delete event</button>
+                <a href="/event/delete/{{$ed->idevent}}" class="btn btn-danger rounded-pill" id="deleteevent" style="width: 109px">
+                    Delete event
+                </a>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $("#deleteevent").on('click', function() {
+        return confirm('Anda akan menghapus event ini. Apakah Anda yakin?')
+    })
+</script>
 
 @php
     $gambarevent = $ed->gambar == "" ? "events_image/events_placeholder.png" :  $ed->gambar;
@@ -39,14 +49,14 @@
     </div>
 
     @php
-        $gambarhost = $host[0]->gambar == "" ? "events_image/events_placeholder.png" :  $host[0]->gambar;
+        $gambarhost = $host[0]->gambar == "" ? "users_image/userprofile_placeholder3.png" :  $host[0]->gambar;
     @endphp
 
     <div>
-        <a href="" class="mr-3" style="color: white; text-decoration: none">
+        <a href="/user/{{ $host[0]->username }}" class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarhost }}" alt="" width="70px" class="rounded-circle">
         </a>
-        <a href="" style="color: black; text-decoration: none">
+        <a href="/user/{{ $host[0]->username }}" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                     {{'@' . $host[0]->username . ' - ' . $host[0]->name }}
             </span>
@@ -160,7 +170,7 @@
 <hr>
 
 <!-- partisipan -->
-<h4 style="margin-bottom: 30px">Participants</h4>
+<h4 style="margin-bottom: 30px">Participants: {{count($userpartisipan)}}</h4>
 @if (count($userpartisipan) == 0)
     <div class="d-flex justify-content-center">
         <span class="p-4" style="font-size: 20px; color: rgb(88, 88, 88)">No participants yet</span>
@@ -170,21 +180,30 @@
 @if (count($userpartisipan) > 0)
 @foreach ($userpartisipan as $up)
 @php
-    $gambarpartisipan = $up->gambar == "" ? "events_image/events_placeholder.png" :  $up->gambar;
+    $gambarpartisipan = $up->gambar == "" ? "users_image/userprofile_placeholder3.png" :  $up->gambar;
 @endphp
 <div class="row mb-4">
-    <div class="col-sm-12 col-md-10">
-        <a href="" class="mr-3" style="color: white; text-decoration: none">
+    <div class="col-sm-12 col-md-8">
+        <a href="/user/{{ $up->username }}" class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarpartisipan }}" alt="" width="70px" class="rounded-circle">
         </a>
-        <a href="" style="color: black; text-decoration: none">
+        <a href="/user/{{ $up->username }}" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                     {{'@' . $up->username . ' - ' . $up->name }}
             </span>
         </a>
     </div>
-    <div class="col-sm-12 col-md-2">
-        <button type="button" class="btn btn-danger rounded-pill" style="width: 90px; margin-left: 50px">Remove</button>
+    <div class="col-sm-12 col-md-4">
+        <div class="row" style="padding-top: 3px">
+            <div class="col-md-2">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-5 pt-1">
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-5 pt-1">
+                <a href="/event/{{ $ed->idevent }}/removeparticipant/{{ $up->username }}" class="btn btn-danger rounded-pill" style="width: 90px">Remove</a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -195,7 +214,25 @@
 
 <!-- Permintaan Bergabung / Calon Partisipan -->
 
-<h4 style="margin-bottom: 30px">Join Requests</h4>
+<h4 style="margin-bottom: 30px">Join Requests: {{count($usercalonpartisipan)}}</h4>
+@if (!$ed->statuspenerimaan)
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="font-size: 1.3em">
+        <strong>Kuota partisipan telah penuh!</strong> Anda tidak dapat menerima permintaan bergabung lagi. Anda dapat menghapus partisipan atau menunggu partisipan membatalkan partisipasinya.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+
+@if (session()->get('erroraccept'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert" style="font-size: 1.3em">
+    <strong>{{ session()->get('erroraccept') }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 @if (count($usercalonpartisipan) == 0)
     <div class="d-flex justify-content-center">
         <span class="p-4" style="font-size: 20px; color: rgb(88, 88, 88)">No join requests yet</span>
@@ -205,14 +242,14 @@
 @if (count($usercalonpartisipan) > 0)
 @foreach ($usercalonpartisipan as $ucp)
 @php
-    $gambarcalonpartisipan = $ucp->gambar == "" ? "events_image/events_placeholder.png" :  $ucp->gambar;
+    $gambarcalonpartisipan = $ucp->gambar == "" ? "users_image/userprofile_placeholder3.png" :  $ucp->gambar;
 @endphp
 <div class="row mb-4">
     <div class="col-sm-12 col-md-8">
-        <a href="" class="mr-3" style="color: white; text-decoration: none">
+        <a href="/user/{{ $ucp->username }}" class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarcalonpartisipan }}" alt="" width="70px" class="rounded-circle">
         </a>
-        <a href="" style="color: black; text-decoration: none">
+        <a href="/user/{{ $ucp->username }}" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                     {{'@' . $ucp->username . ' - ' . $ucp->name }}
             </span>
@@ -222,11 +259,21 @@
         <div class="row" style="padding-top: 3px">
             <div class="col-md-2">
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-5">
-                <button type="button" class="btn btn-primary rounded-pill" style="width: 109px; margin-bottom: 5px">Edit event</button>
+            <div class="col-sm-12 col-md-12 col-lg-5 pt-1">
+                @if ($ed->statuspenerimaan)
+                    <a href="/event/{{ $ed->idevent }}/accjoinreq/{{ $ucp->username }}" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px">
+                        Accept
+                    </a>
+                @else
+                    <a href="" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px; pointer-events: none; cursor: default; opacity: 0.5">
+                        Accept
+                    </a>
+                @endif
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-5">
-                <button type="button" class="btn btn-danger rounded-pill" style="width: 109px">Delete event</button>
+            <div class="col-sm-12 col-md-12 col-lg-5 pt-1">
+                <a href="/event/{{ $ed->idevent }}/decjoinreq/{{ $ucp->username }}" class="btn btn-danger rounded-pill" style="width: 90px">
+                    Decline
+                </a>
             </div>
         </div>
     </div>

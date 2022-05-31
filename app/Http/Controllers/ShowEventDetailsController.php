@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Psy\Command\WhereamiCommand;
 
-class EventController extends Controller
+class ShowEventDetailsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,7 +21,7 @@ class EventController extends Controller
     /**
      * Show event details view
      */
-    public function index($idevent) {
+    public function showEventDetails($idevent) {
         $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
         $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
 
@@ -42,7 +42,7 @@ class EventController extends Controller
             array_push($usercalonpartisipan, $infocalonpartisipan);
         }
 
-        $role = 3; // default not host and has not requested to join
+        $role = 3; // default 0, not host and has not requested to join
 
         // cek apakah host
         if (0) { // $eventdetails->usernamehost == username of logged in user (retrieved from session)
@@ -101,18 +101,11 @@ class EventController extends Controller
 
     }
 
-    /**
-     * Edit event
-     */
-    public function edit($idevent) {
-	    $event = DB::table('eo')->where('idevent',$idevent)->get();
-
-	    return view('editevent',['event' => $event]);
-    }
 
     /**
      * Update event
      */
+    /*
     public function update(Request $request)
     {
 	    // update eo table
@@ -130,19 +123,8 @@ class EventController extends Controller
 
 	    ]);
 
-	    return redirect('/event/details/{' . $request->id . '}'); //how to write idevent in redirect????
+	    return redirect('/event/details/{$request->id}');
     }
+    */
 
-    /**
-     * Delete event
-     */
-    public function delete($idevent) {
-	    DB::table('eo')->where('idevent',$idevent)->delete();
-        DB::table('eoikt')->where('idevent', $idevent)->delete();
-        DB::table('eorqt')->where('idevent', $idevent)->delete();
-        DB::table('partisipan')->where('idevent', $idevent)->delete();
-        DB::table('calonpartisipan')->where('idevent', $idevent)->delete();
-
-	    return redirect('/myevents/created');
-    }
 }
