@@ -20,9 +20,18 @@
 
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5">
-                <a href="/event/{{ $ed->idevent }}/reqtojoin/random" class="btn btn-primary rounded-pill" style="width: 109px">
+                <form action="/event/reqtojoin" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
+                    <button type="submit" class="btn btn-primary rounded-pill" style="width: 109px">
+                        Join event
+                    </button>
+                </form>
+                <!--
+                <a href="/event/{{ $ed->idevent }}/reqtojoin" class="btn btn-primary rounded-pill" style="width: 109px">
                     Join event
                 </a>
+                -->
             </div>
         </div>
     </div>

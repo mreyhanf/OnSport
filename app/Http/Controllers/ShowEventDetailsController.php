@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Psy\Command\WhereamiCommand;
+use Illuminate\Support\Facades\Auth;
 
 class ShowEventDetailsController extends Controller
 {
@@ -21,7 +22,7 @@ class ShowEventDetailsController extends Controller
     /**
      * Show event details view
      */
-    public function showEventDetails($idevent) {
+    public function showEventDetails(Request $request, $idevent) {
         $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
         $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
 
@@ -35,48 +36,19 @@ class ShowEventDetailsController extends Controller
             array_push($userpartisipan, $infopartisipan);
         }
 
-        $calonpartisipan = DB::table('calonpartisipan')->where('idevent', $idevent)->get();
-        $usercalonpartisipan = [];
-        foreach ($calonpartisipan as $cp) {
-            $infocalonpartisipan = DB::table('users')->where('username', $cp->username)->first(); //get each calon partisipan's info (username/name and profile picture) from users table
-            array_push($usercalonpartisipan, $infocalonpartisipan);
-        }
+        $user = Auth::user();
 
-        $role = 3; // default 0, not host and has not requested to join
+        // Return view berdasarkan role
 
-        // cek apakah host
-        if (0) { // $eventdetails->usernamehost == username of logged in user (retrieved from session)
-            $role = 1; // role 1 = host
-        }
-
-        // cek apakah partisipan
-        // cara 1 cek apakah partisipan
-        $partisipanloggedin = DB::table('partisipan')->where([
-            ['idevent', '=', $idevent],
-            ['username', '=', 'logged_in_users_username_from_session'], // username of logged in user (retrieved from session)
-        ])->get();
-        if ($partisipanloggedin->isNotEmpty()) {
-            $role = 2; // role 2 = partisipan
-        }
-
-        /*
-        // cara 2 cek apakah partisipan
-        foreach ($partisipan as $par) {
-            if (0) { // $par->username == username of logged in user (retrieved from session)
-                $isparticipant = true;
-                break;
-            }
-        }
-        */
-
-        // cek apakah calon partisipan
+        // cek apakah calon partisipan, return view eventdetails_calonpartisipan apabila ya
         // cara 1 cek apakah calon partisipan
+
         $calonpartisipanloggedin = DB::table('calonpartisipan')->where([
             ['idevent', '=', $idevent],
-            ['username', '=', 'logged_in_users_username_from_session'], // username of logged in user (retrieved from session)
+            ['username', '=', $user->username], // username of logged in user (retrieved from session)
         ])->get();
         if ($calonpartisipanloggedin->isNotEmpty()) {
-            $role = 3; // role 3 = calon partisipan
+            return view('eventdetails_calonpartisipan',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan]);
         }
 
         /*
@@ -89,6 +61,49 @@ class ShowEventDetailsController extends Controller
         }
         */
 
+
+        // cek apakah partisipan, return view eventdetails_partisipan apabila ya
+        // cara 1 cek apakah partisipan
+
+        $partisipanloggedin = DB::table('partisipan')->where([
+            ['idevent', '=', $idevent],
+            ['username', '=', $user->username], // username of logged in user (retrieved from session)
+        ])->get();
+        if ($partisipanloggedin->isNotEmpty()) {
+            return view('eventdetails_partisipan',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan]);
+        }
+
+        /*
+        // cara 2 cek apakah partisipan
+        foreach ($partisipan as $par) {
+            if (0) { // $par->username == username of logged in user (retrieved from session)
+                $isparticipant = true;
+                break;
+            }
+        }
+        */
+
+
+
+        // cek apakah host, return view eventdetails_host apabila ya
+        if ($host_username == $user->username) { // $eventdetails->usernamehost == username of logged in user (retrieved from session)
+            $calonpartisipan = DB::table('calonpartisipan')->where('idevent', $idevent)->get();
+            $usercalonpartisipan = [];
+            foreach ($calonpartisipan as $cp) {
+                $infocalonpartisipan = DB::table('users')->where('username', $cp->username)->first(); //get each calon partisipan's info (username/name and profile picture) from users table
+                array_push($usercalonpartisipan, $infocalonpartisipan);
+            }
+
+            return view('eventdetails_host',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan,'usercalonpartisipan' => $usercalonpartisipan]);
+        }
+
+
+
+        // dijalankan apabila logged in user bukan host, partisipan, atau pun calon partisipan. return view eventdetails_default
+        return view('eventdetails_default',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan]);
+
+
+        /*
         if ($role == 0) { // default, for when not a host and has not requested to join
             return view('eventdetails_default',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan]);
         } elseif ($role == 3) { // for calon partisipan
@@ -98,6 +113,7 @@ class ShowEventDetailsController extends Controller
         } elseif ($role == 1) { // for host
             return view('eventdetails_host',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan,'usercalonpartisipan' => $usercalonpartisipan]);
         }
+        */
 
     }
 

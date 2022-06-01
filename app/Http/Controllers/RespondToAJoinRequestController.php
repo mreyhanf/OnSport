@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class RespondToAJoinRequestController extends Controller
 {
@@ -21,24 +22,26 @@ class RespondToAJoinRequestController extends Controller
      * Accept a join request to an event
      * By Reyhan
      */
-    public function acceptJoinRequest($idevent, $username)
+    public function acceptJoinRequest(Request $request)
     {
-        $statuspenerimaan = RespondToAJoinRequestController::checkStatusPenerimaan($idevent);
-        $event = DB::table('eo')->where('idevent', $idevent)->first();
+        $statuspenerimaan = RespondToAJoinRequestController::checkStatusPenerimaan($request->idevent);
+        $event = DB::table('eo')->where('idevent', $request->idevent)->first();
+        $user = Auth::user();
 
-        if ($statuspenerimaan && DB::table('partisipan')->where('idevent', $idevent)->where('username', $username)->doesntExist() && $username != $event->usernamehost) {
-            RespondToAJoinRequestController::createPartisipan($idevent, $username);
+        if ($user->username == $event->usernamehost && $statuspenerimaan && DB::table('partisipan')->where('idevent', $request->idevent)->where('username', $request->username)->doesntExist() && $request->username != $event->usernamehost) {
+            RespondToAJoinRequestController::createPartisipan($request->idevent, $request->username);
 
             $judulevent = $event->judulevent;
-            $usernamepg = $event->usernamehost;
-            RespondToAJoinRequestController::createNotifikasiJoinRequestAccepted($idevent, $username, $judulevent, $usernamepg);
+            $usernamepg = $user->username;
+            RespondToAJoinRequestController::createNotifikasiJoinRequestAccepted($request->idevent, $request->username, $judulevent, $usernamepg);
 
-            RespondToAJoinRequestController::deleteCalonPartisipan($idevent, $username);
+            RespondToAJoinRequestController::deleteCalonPartisipan($request->idevent, $request->username);
 
-            RespondToAJoinRequestController::setStatusPenerimaan($idevent);
+            RespondToAJoinRequestController::setStatusPenerimaan($request->idevent);
 
             return redirect()->back();
-        } elseif (DB::table('partisipan')->where('idevent', $idevent)->where('username', $username)->exists()) {
+
+        } elseif (DB::table('partisipan')->where('idevent', $request->idevent)->where('username', $request->username)->exists()) {
             $erroraccept = "Gagal menerima permintaan bergabung; user telah berada dalam daftar partisipan untuk event ini.";
             return redirect()->back()->with(['erroraccept' => $erroraccept]);
         } elseif (!$statuspenerimaan) {
@@ -130,15 +133,18 @@ class RespondToAJoinRequestController extends Controller
      * Decline a join request to an event
      * By Reyhan
      */
-    public function declineJoinRequest($idevent, $username)
+    public function declineJoinRequest(Request $request)
     {
-        RespondToAJoinRequestController::deleteCalonPartisipan($idevent, $username);
+        $event = DB::table('eo')->where('idevent', $request->idevent)->first();
+        $user = Auth::user();
+        if ($user->username == $event->usernamehost) {
+            RespondToAJoinRequestController::deleteCalonPartisipan($request->idevent, $request->username);
 
-        $event = DB::table('eo')->where('idevent', $idevent)->first();
-        $judulevent = $event->judulevent;
-        $usernamepg = $event->usernamehost;
-        RespondToAJoinRequestController::createNotifikasiJoinRequestDeclined($idevent, $username, $judulevent, $usernamepg);
+            $judulevent = $event->judulevent;
+            $usernamepg = $user->username;
+            RespondToAJoinRequestController::createNotifikasiJoinRequestDeclined($request->idevent, $request->username, $judulevent, $usernamepg);
 
+        }
         return redirect()->back();
     }
 

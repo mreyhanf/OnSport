@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ShowCreatedEvents extends Controller
 {
@@ -22,7 +23,8 @@ class ShowCreatedEvents extends Controller
      */
     public function displayCreatedEventOlahraga()
     {
-        $events = DB::table('eo')->where('usernamehost', 'reyhan')->orderBy('tanggal', 'desc')->orderBy('jam', 'desc')->get();
+        $user = Auth::user();
+        $events = DB::table('eo')->where('usernamehost', $user->username)->orderBy('tanggal', 'desc')->orderBy('jam', 'desc')->get();
         $jumlahpartisipan = [];
         foreach ($events as $event) {
             $partisipan = DB::table('partisipan')->where('idevent', $event->idevent)->count();

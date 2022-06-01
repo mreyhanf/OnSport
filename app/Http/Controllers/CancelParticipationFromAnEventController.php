@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class RemoveParticipantsController extends Controller
+class CancelParticipationFromAnEventController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,35 +18,48 @@ class RemoveParticipantsController extends Controller
         $this->middleware('auth');
     }
 
+
     /**
-     * Show user information page
+     *
+     *
      * By Reyhan
      */
-    public function deleteParticipant(Request $request) {
+    public function cancelParticipation(Request $request)
+    {
+        $idevent = $request->idevent;
+        $username = Auth::user()->username;
+        if (DB::table('partisipan')->where('idevent', $idevent)->where('username', $username)->exists()) {
+            CancelParticipationFromAnEventController::deletePartisipan($idevent, $username);
+            $event = DB::table('eo')->where('idevent', $idevent)->first();
+            $judulevent = $event->judulevent;
+            $usernamepn = $event->usernamehost;
 
-        $user = Auth::user();
-        $event = DB::table('eo')->where('idevent', $request->idevent)->first();
-        if ($user->username == $event->usernamehost) { //if user is indeed the host
-        DB::table('partisipan')->where('username', $request->username)->delete();
-        DB::table('eoikt')->where('idevent', $request->idevent)->where('username', $request->username)->delete();
-
-        $judulevent = $event->judulevent;
-        $usernamepg = $user->username;
-
-        RemoveParticipantsController::createParticipantRemovalNotification($request->idevent, $request->username, $judulevent, $usernamepg);
-        RemoveParticipantsController::setStatusPenerimaan($request->idevent);
+            CancelParticipationFromAnEventController::createParticipantRemovalNotification($idevent, $usernamepn, $judulevent, $username);
+            CancelParticipationFromAnEventController::setStatusPenerimaan($idevent);
         }
 
         return redirect()->back();
+
+    }
+
+    /**
+     *
+     *
+     * By Reyhan
+     */
+    public function deletePartisipan($idevent, $username)
+    {
+        DB::table('partisipan')->where('idevent', $idevent)->where('username', $username)->delete(); //might want to create another function
     }
 
     /**
      * Create participant removal notification for the removed partisipan
+     *
      * By Reyhan
      */
     public function createParticipantRemovalNotification($idevent, $usernamepn, $judulevent, $usernamepg) {
 
-        $jenis = 2; //jenis notifikasi participant removal = 2
+        $jenis = 7; //jenis notifikasi cancel participation = 7
         DB::table('notifikasi')->insert([
             'usernamepn' => $usernamepn,
             'jenis' => $jenis,

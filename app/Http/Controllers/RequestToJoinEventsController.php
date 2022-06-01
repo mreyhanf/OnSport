@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class RequestToJoinEventsController extends Controller
 {
@@ -21,14 +22,15 @@ class RequestToJoinEventsController extends Controller
      * Send join request to an event
      * By Reyhan
      */
-    public function sendJoinRequest($idevent, $username)
+    public function sendJoinRequest(Request $request)
     {
-        if (DB::table('calonpartisipan')->where('idevent', $idevent)->where('username', $username)->doesntExist()) {
-        RequestToJoinEventsController::createCalonPartisipan($idevent, $username);
-        $event = DB::table('eo')->where('idevent', $idevent)->first();
+        $user = Auth::user();
+        if (DB::table('calonpartisipan')->where('idevent', $request->idevent)->where('username', $user->username)->doesntExist()) {
+        RequestToJoinEventsController::createCalonPartisipan($request->idevent, $user->username);
+        $event = DB::table('eo')->where('idevent', $request->idevent)->first();
         $judulevent = $event->judulevent;
         $usernamepn = $event->usernamehost;
-        RequestToJoinEventsController::createJoinEventNotification($idevent, $usernamepn, $judulevent, $username);
+        RequestToJoinEventsController::createJoinEventNotification($request->idevent, $usernamepn, $judulevent, $user->username);
         }
 
         return redirect()->back();

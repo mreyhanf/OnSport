@@ -20,9 +20,18 @@
 
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6">
-                <a href="/event/{{ $ed->idevent }}/canceljoinreq/random" class="btn btn-danger rounded-pill" style="width: 153px">
+                <form action="/event/canceljoinreq" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
+                    <button type="submit" class="btn btn-danger rounded-pill" style="width: 153px">
+                        Cancel join request
+                    </button>
+                </form>
+                <!--
+                <a href="/event/{{ $ed->idevent }}/canceljoinreq" class="btn btn-danger rounded-pill" style="width: 153px">
                     Cancel join request
                 </a>
+                -->
             </div>
         </div>
     </div>

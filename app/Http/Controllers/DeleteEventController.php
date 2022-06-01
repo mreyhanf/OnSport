@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DeleteEventController extends Controller
 {
@@ -11,24 +12,31 @@ class DeleteEventController extends Controller
      * Delete event
      * By Reyhan
      */
-    public function deleteEvent($idevent) {
+    public function deleteEvent(Request $request) {
 
-        $partisipan = DB::table('partisipan')->where('idevent', $idevent)->get();
-        $calonpartisipan = DB::table('calonpartisipan')->where('idevent', $idevent)->get();
-        $event = DB::table('eo')->where('idevent', $idevent)->get();
-        $judulevent = $event[0]->judulevent;
-        $usernamepg = $event[0]->usernamehost;
+        $usernamehost = DB::table('eo')->where('idevent', $request->idevent)->first()->usernamehost;
+        $user = Auth::user();
+        if ($user->username == $usernamehost) {
+            $partisipan = DB::table('partisipan')->where('idevent', $request->idevent)->get();
+            $calonpartisipan = DB::table('calonpartisipan')->where('idevent', $request->idevent)->get();
+            $event = DB::table('eo')->where('idevent', $request->idevent)->get();
+            $judulevent = $event[0]->judulevent;
+            $usernamepg = $user->username;
 
-	    DB::table('eo')->where('idevent',$idevent)->delete();
+            DB::table('eo')->where('idevent',$request->idevent)->delete();
 
-        DB::table('eoikt')->where('idevent', $idevent)->delete();
-        DB::table('eorqt')->where('idevent', $idevent)->delete();
-        DB::table('partisipan')->where('idevent', $idevent)->delete();
-        DB::table('calonpartisipan')->where('idevent', $idevent)->delete();
+            // DB::table('eoikt')->where('idevent', $idevent)->delete();
+            // DB::table('eorqt')->where('idevent', $idevent)->delete();
+            DB::table('partisipan')->where('idevent', $request->idevent)->delete();
+            DB::table('calonpartisipan')->where('idevent', $request->idevent)->delete();
 
-        DeleteEventController::createDeleteEventNotification($idevent, $partisipan, $calonpartisipan, $judulevent, $usernamepg);
+            DeleteEventController::createDeleteEventNotification($request->idevent, $partisipan, $calonpartisipan, $judulevent, $usernamepg);
 
-        return redirect('/myevents/created');
+            return redirect('/myevents/created');
+        } else {
+            return redirect()->back();
+        }
+
     }
 
 

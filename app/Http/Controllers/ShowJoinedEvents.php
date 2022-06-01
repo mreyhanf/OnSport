@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ShowJoinedEvents extends Controller
 {
@@ -22,11 +23,12 @@ class ShowJoinedEvents extends Controller
      */
     public function displayJoinedEventOlahraga()
     {
+        $user = Auth::user();
         //alternatif 1 ambil dari eoikt
-        $events = DB::table('eoikt')->where('username', 'mreyhanf')->get();
+        // $events = DB::table('eoikt')->where('username', $user->username)->get();
 
         //alternatif 2 ambil langsung dari eo. eoikt & eorqt sepertinya dihapus saja, tidak diperlukan
-        $ideventpartisipan = DB::table('partisipan')->where('username', 'mreyhanf')->get();
+        $ideventpartisipan = DB::table('partisipan')->where('username', $user->username)->get();
         $eventpartisipan = [];
         foreach($ideventpartisipan as $ideventpar) {
             $eventdata = DB::table('eo')->where('idevent', $ideventpar->idevent)->first();

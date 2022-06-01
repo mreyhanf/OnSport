@@ -22,16 +22,24 @@
                 </a>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5">
-                <a href="/event/delete/{{$ed->idevent}}" class="btn btn-danger rounded-pill" id="deleteevent" style="width: 109px">
+                <form action="/event/delete" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
+                    <button type="submit" class="btn btn-danger rounded-pill" id="deleteeventbutton" style="width: 109px">
+                        Delete event
+                    </button>
+                </form>
+                <!-- <a href="/event/delete/{{$ed->idevent}}" class="btn btn-danger rounded-pill" id="deleteevent" style="width: 109px">
                     Delete event
                 </a>
+                -->
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $("#deleteevent").on('click', function() {
+    $("#deleteeventbutton").on('click', function() {
         return confirm('Anda akan menghapus event ini. Apakah Anda yakin?')
     })
 </script>
@@ -201,7 +209,17 @@
 
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5 pt-1">
+                <form action="/event/removeparticipant" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
+                    <input type="hidden" name="username" value="{{ $up->username }}">
+                    <button type="submit" class="btn btn-danger rounded-pill" style="width: 90px">
+                        Remove
+                    </button>
+                </form>
+                <!--
                 <a href="/event/{{ $ed->idevent }}/removeparticipant/{{ $up->username }}" class="btn btn-danger rounded-pill" style="width: 90px">Remove</a>
+                -->
             </div>
         </div>
     </div>
@@ -261,19 +279,49 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5 pt-1">
                 @if ($ed->statuspenerimaan)
+                    <form action="/event/accjoinreq" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
+                        <input type="hidden" name="username" value="{{ $ucp->username }}">
+                        <button type="submit" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px">
+                            Accept
+                        </button>
+                    </form>
+                    <!--
                     <a href="/event/{{ $ed->idevent }}/accjoinreq/{{ $ucp->username }}" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px">
                         Accept
                     </a>
+                    -->
                 @else
+                    <form action="" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="idevent" value="">
+                        <input type="hidden" name="idevent" value="">
+                        <button type="submit" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px" disabled>
+                            Accept
+                        </button>
+                    </form>
+                    <!--
                     <a href="" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px; pointer-events: none; cursor: default; opacity: 0.5">
                         Accept
                     </a>
+                    -->
                 @endif
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5 pt-1">
+                <form action="/event/decjoinreq" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
+                    <input type="hidden" name="username" value="{{ $ucp->username }}">
+                    <button type="submit" class="btn btn-danger rounded-pill" style="width: 90px">
+                        Decline
+                    </button>
+                </form>
+                <!--
                 <a href="/event/{{ $ed->idevent }}/decjoinreq/{{ $ucp->username }}" class="btn btn-danger rounded-pill" style="width: 90px">
                     Decline
                 </a>
+                -->
             </div>
         </div>
     </div>
