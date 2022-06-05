@@ -96,9 +96,6 @@
 
 </div>
 
-
-
-
 <script>
     const collection_card_title = document.getElementsByClassName("card-title");
     for (let i = 0; i < collection_card_title.length; i++) {
