@@ -27,6 +27,10 @@
                     You are logged in!
                 </div>
             </div>
+            <div class="card">
+                <a href="createevents" style="postion:fixed;">
+                <button type="button" formaction="createevents" class="btn btn-primary" style="width: 120px">Create Event</button>
+            </div>
         </div>
     </div>
 </div>

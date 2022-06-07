@@ -17,7 +17,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5">
-                <a href="" class="btn btn-primary rounded-pill" style="width: 109px; margin-bottom: 5px">
+                <a href="/event/edit/{{$ed->idevent}}" class="btn btn-primary rounded-pill" style="width: 109px; margin-bottom: 5px">
                     Edit event
                 </a>
             </div>
