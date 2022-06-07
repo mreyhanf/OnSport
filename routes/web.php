@@ -52,16 +52,3 @@ Route::post('/event/canceljoinreq', 'CancelJoinRequestToEventsController@cancelJ
 
 //Cancel participation from events
 Route::post('/event/cancelparticipation', 'CancelParticipationFromAnEventController@cancelParticipation');
-
-//Create events routes
-Route::get('/createevents','CreateEventsController@index')->name('createevents');
-Route::post('/createevents/store','CreateEventsController@store');
-
-//Edit events route
-Route::get('/event/edit/{idevent}','EditEventController@editEvent');
-Route::post('/event/update/{idevent}','EditEventController@update');
-
-//Show Events by Category (Browse) route
-Route::get('/browse', 'BrowseController@index');
-Route::post('/browse/filter', 'BrowseController@filter');
-

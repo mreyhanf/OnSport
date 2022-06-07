@@ -96,6 +96,11 @@
 
 </div>
 
+<div class="container">
+    <a href="createevents" style="postion:fixed;">
+    <button type="button" formaction="createevents" class="btn btn-outline-secondary" style="width: 120px">Create Event</button>
+</div>
+
 <script>
     const collection_card_title = document.getElementsByClassName("card-title");
     for (let i = 0; i < collection_card_title.length; i++) {
