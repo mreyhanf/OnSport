@@ -17,8 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@activeCreatedEventOlahraga', 'HomeController@activeJoinedEventOlahraga');
 
+//Forget Reset Password Routes
+Route::get('/reset-password', 'ResetPasswordController@displayResetpasswordpage');
+Route::post('/reset-password', 'ResetPasswordController@ResetPassword');
 //My Events routes
 Route::get('/myevents', 'ShowCreatedEvents@displayCreatedEventOlahraga');
 Route::get('/myevents/created', 'ShowCreatedEvents@displayCreatedEventOlahraga');
