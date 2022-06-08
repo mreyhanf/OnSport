@@ -66,6 +66,7 @@
     </div>
 </div>
 </form>
+<div class="container">
 <hr>
 
 @php
@@ -76,6 +77,7 @@
 @endphp
 
 <div class="container">
+    <div>
     @if (empty($events))
     <div style="padding: 15px;
     position: absolute;
@@ -130,7 +132,8 @@
     }
     @endphp
     @endif
-
+    </div>
+</div>
 </div>
 
 
