@@ -69,3 +69,10 @@ Route::post('/browse/filter', 'BrowseController@filter');
 
 //Notfications
 Route::get('/notifications', 'ShowNotifications@showNotifications');
+
+//Edit Profile
+Route::get('/profile/edit', 'EditProfileController@edit');
+Route::post('/profile/update', 'EditProfileController@update');
+
+//Show Profil
+Route::get('/profile', 'ProfileController@getProfile');

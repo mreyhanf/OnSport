@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ShowUserInformationController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Create a new controller instance.@error ('record')
+     * @error
+     * @enderror
      *
      * @return void
      */
@@ -23,7 +26,6 @@ class ShowUserInformationController extends Controller
      */
     public function getUserInformation($username) {
         $userinfo = DB::table('users')->where('username', $username)->first();
-        $userpreferensiolahraga = DB::table('preferensiolahraga')->where('username', $username)->get();
-        return view('userinformation',['userinfo' => $userinfo, 'userpreferensiolahraga' => $userpreferensiolahraga]);
+        return view('userinformation',['userinfo' => $userinfo]);
     }
 }
