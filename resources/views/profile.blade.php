@@ -30,10 +30,10 @@ $gambarprofile = $userinfo->gambar == "" ? "users_image/userprofile_placeholder3
 
 <div>
     <div>
-        <a href="/user/{{ $userinfo->username }}" class="mr-3" style="color: white; text-decoration: none">
+        <a class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarprofile }}" alt="" width=200px height=200px border-radius= 100% class="rounded-circle">
         </a>
-        <a href="/user/{{ $userinfo->username }}" style="color: black; text-decoration: none">
+        <a style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                 {{'@' . $userinfo->username }}
             </span>
