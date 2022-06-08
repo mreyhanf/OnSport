@@ -1,6 +1,6 @@
 @extends('layouts.tabs')
 
-@section('title', 'Home • OnSport')
+@section('title', 'Notifications • OnSport')
 
 @section('stylehighlighttab_notifications', 'background-color: #d6d6d6')
 @section('activenav_notifications', 'active')
