@@ -37,7 +37,7 @@
 </div>
 
 <script type="text/javascript">
-    $("#cancelparticipationbutton").on('click', function() {
+    $("#cancelparticipationbutton").on('click', function confirmParticipationCancellation() {
         return confirm('Anda akan membatalkan partisipasi Anda dalam event ini. Apakah Anda yakin?')
     })
 </script>

@@ -35,7 +35,7 @@ class CancelParticipationFromAnEventController extends Controller
             $judulevent = $event->judulevent;
             $usernamepn = $event->usernamehost;
 
-            CancelParticipationFromAnEventController::createParticipantRemovalNotification($idevent, $usernamepn, $judulevent, $username);
+            CancelParticipationFromAnEventController::createParticipationCancellationNotification($idevent, $usernamepn, $judulevent, $username);
             CancelParticipationFromAnEventController::setStatusPenerimaan($idevent);
         }
 
@@ -58,7 +58,7 @@ class CancelParticipationFromAnEventController extends Controller
      *
      * By Reyhan
      */
-    public function createParticipantRemovalNotification($idevent, $usernamepn, $judulevent, $usernamepg) {
+    public function createParticipationCancellationNotification($idevent, $usernamepn, $judulevent, $usernamepg) {
 
         $jenis = 7; //jenis notifikasi cancel participation = 7
         $timestamp = Carbon::now()->toDateTimeString();

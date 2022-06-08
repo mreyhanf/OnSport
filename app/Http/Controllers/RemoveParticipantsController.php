@@ -29,7 +29,6 @@ class RemoveParticipantsController extends Controller
         $event = DB::table('eo')->where('idevent', $request->idevent)->first();
         if ($user->username == $event->usernamehost) { //if user is indeed the host
         DB::table('partisipan')->where('username', $request->username)->delete();
-        DB::table('eoikt')->where('idevent', $request->idevent)->where('username', $request->username)->delete();
 
         $judulevent = $event->judulevent;
         $usernamepg = $user->username;

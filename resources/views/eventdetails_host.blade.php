@@ -39,7 +39,7 @@
 </div>
 
 <script type="text/javascript">
-    $("#deleteeventbutton").on('click', function() {
+    $("#deleteeventbutton").on('click', function confirmEventDeletion() {
         return confirm('Anda akan menghapus event ini. Apakah Anda yakin?')
     })
 </script>
