@@ -213,7 +213,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
                     <input type="hidden" name="username" value="{{ $up->username }}">
-                    <button type="submit" class="btn btn-danger rounded-pill" style="width: 90px">
+                    <button type="submit" class="btn btn-danger rounded-pill" style="width: 90px; margin-top: 7px">
                         Remove
                     </button>
                 </form>
@@ -283,7 +283,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
                         <input type="hidden" name="username" value="{{ $ucp->username }}">
-                        <button type="submit" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px">
+                        <button type="submit" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px; margin-top: 7px">
                             Accept
                         </button>
                     </form>
@@ -297,7 +297,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="idevent" value="">
                         <input type="hidden" name="idevent" value="">
-                        <button type="submit" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px" disabled>
+                        <button type="submit" class="btn btn-success rounded-pill" style="width: 90px; margin-bottom: 5px; margin-top: 7px" disabled>
                             Accept
                         </button>
                     </form>
@@ -313,7 +313,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
                     <input type="hidden" name="username" value="{{ $ucp->username }}">
-                    <button type="submit" class="btn btn-danger rounded-pill" style="width: 90px">
+                    <button type="submit" class="btn btn-danger rounded-pill" style="width: 90px; margin-top: 7px">
                         Decline
                     </button>
                 </form>
