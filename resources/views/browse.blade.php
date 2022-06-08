@@ -1,56 +1,96 @@
 @extends('layouts.tabs')
 
-@section('title', 'Home • OnSport')
+@section('title', 'Browse • OnSport')
 
-@section('stylehighlighttab_home', 'background-color: #d6d6d6')
-@section('activenav_home', 'active')
-@section('stylecolortext_home', 'black')
+@section('stylehighlighttab_browse', 'background-color: #d6d6d6')
+@section('activenav_browse', 'active')
+@section('stylecolortext_home', 'white')
 @section('stylecolortext_myevents', 'white')
-@section('stylecolortext_browse', 'white')
+@section('stylecolortext_browse', 'black')
 @section('stylecolortext_notifications', 'white')
 @section('stylecolortext_profile', 'white')
 
 @section('content')
+<form action="/browse/filter" method="post">
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8" style="padding-bottom: 15px">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+    <div>
+    <a class="navbar-brand">Filter</a>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+    <div class="col-sm-2">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="kategori[]" id="Sepakbola/Futsal" value="Sepak bola/Futsal">
+        <label class="form-check-label" font-size="large" for="inlineCheckbox1">Sepak bola/Futsal</label>
+    </div>
+    </div>
+    <div class="col-sm-2">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="kategori[]" id="Basket" value="Basket">
+        <label class="form-check-label" for="inlineCheckbox2">Basket</label>
+    </div>
+    </div>
+    <div class="col-sm-2">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="kategori[]" id="Voli" value="Voli">
+        <label class="form-check-label" for="inlineCheckbox2">Voli</label>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-2">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="kategori[]" id="Bulutangkis" value="Bulutangkis">
+        <label class="form-check-label" for="inlineCheckbox2">Bulutangkis</label>
+    </div>
+    </div>
+    <div class="col-sm-2">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="kategori[]" id="Bersepeda" value="Bersepeda">
+        <label class="form-check-label" for="inlineCheckbox2">Bersepeda</label>
+    </div>
+    </div>
+    <div class="col-sm-2">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="kategori[]" id="Lain-lain" value="Lain-lain">
+        <label class="form-check-label" for="inlineCheckbox2">Lain-lain</label>
+    </div>
+    </div>
+    </div>
+</div>
+    {{csrf_field()}}
+<div class="container">
+    <div>
+    <input type="submit" value="Terapkan" class="btn btn-primary" style="width: 100px">
+    </div>
+</div>
+<hr>
+
+@php
+    if (Session::has('events')) {
+        $events = Session::get('events');
+        $jumlahpartisipan = Session::get('jumlahpartisipan');
+    }
+@endphp
 
 <div class="container">
-
-    <h3 style="padding: 8px; font-weight: bold;">Active Events</h3>
-
-    @if ($events->isEmpty()) <!-- ($events->isEmpty()) -->
+    @if (empty($events))
     <div style="padding: 15px;
     position: absolute;
-    top: 65%;
+    top: 50%;
     left: 50%;
     -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);">
         <span style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
     </div>
-
-@endif
-@if ($events->isNotEmpty()) <!-- ($events->isNotEmpty()) -->
+    @endif
+    @if (!empty($events))
     @php
-    $carddeckamount = ceil($events->count() / 3); // jumlah card-deck atau baris
+    $carddeckamount = ceil(count($events) / 3); // jumlah card-deck atau baris
     $eventsindex = 0;
-    $lasteventsindex = $events->count() - 1;
+    $lasteventsindex = count($events) - 1;
     for ($i = 1; $i <= $carddeckamount; $i++) {
         echo '<div class="row card-deck mb-4">';
         for ($j = $eventsindex; $j <= $eventsindex + 2 && $j <= $lasteventsindex; $j++) {
@@ -88,13 +128,10 @@
         $eventsindex += 3;
     }
     @endphp
-@endif
-
-<hr />
-
-<h3 style="padding: 15px; font-weight: bold ">Recommendations</h3>
+    @endif
 
 </div>
+
 
 <script>
     const collection_card_title = document.getElementsByClassName("card-title");
@@ -118,5 +155,5 @@
         }
     }
 </script>
-
+</form>
 @endsection

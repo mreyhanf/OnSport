@@ -22,7 +22,7 @@ class ShowEventDetailsController extends Controller
     /**
      * Show event details view
      */
-    public function showEventDetails(Request $request, $idevent) {
+    public function showEventDetails($idevent) {
         $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
         $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
 
