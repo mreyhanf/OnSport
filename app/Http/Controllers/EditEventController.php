@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class EditEventController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function editEvent(Request $request, $idevent)
     {
 	// mengambil data event berdasarkan id event yang dipilih
@@ -19,6 +29,7 @@ class EditEventController extends Controller
     // update data event
     public function update(Request $request)
     {
+        $user = Auth::user();
         $date = date('Y-m-d', strtotime($request->tanggal));
 
         // menyimpan data file gambar yang diupload ke variabel $file
@@ -27,11 +38,14 @@ class EditEventController extends Controller
         // isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'events_image';
 
-        $namadanlokasi = $tujuan_upload . "/" . $file->getClientOriginalName(); //teknik tanpa direname
+        $namadanlokasi = '';
+        if(!empty($file)) {
+            $namadanlokasi = $tujuan_upload . "/" . $file->getClientOriginalName(); //teknik tanpa direname
+        }
         $kuotapartisipan = DB::table('eo')->where('idevent',$request->idevent)->value('kuotapartisipan');
 	// update data event
         DB::table('eo')->where('idevent',$request->idevent)->update([
-	    'usernamehost'=> 'hrkurnia',
+	    'usernamehost'=> $user->username,
 		'judulevent' => $request->judulevent,
 		'kategori' => $request->kategori,
         'tanggal' => $date,
@@ -45,9 +59,10 @@ class EditEventController extends Controller
         'catatan' => $request->catatan,
         'gambar' => $namadanlokasi
 	]);
-    // upload file
-    $file->move($tujuan_upload,$file->getClientOriginalName());
-
+    if(!empty($file)) {
+        // upload file
+        $file->move($tujuan_upload,$file->getClientOriginalName());
+    }
 	// alihkan halaman ke halaman event details
 	return redirect('/event/details/' . $request->idevent);
     }

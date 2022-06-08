@@ -21,20 +21,20 @@
     <div class="row">
     <div class="col-sm-2">
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="kategori[]" id="Sepakbola/Futsal" value="Sepak bola/Futsal">
-        <label class="form-check-label" font-size="large" for="inlineCheckbox1">Sepak bola/Futsal</label>
+        <input class="form-check-input" type="checkbox" name="kategori[]" id="Sepak bola/Futsal" value="Sepak bola/Futsal">
+        <label class="form-check-label" font-size="large" for="Sepakbola/Futsal">Sepak bola/Futsal</label>
     </div>
     </div>
     <div class="col-sm-2">
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="kategori[]" id="Basket" value="Basket">
-        <label class="form-check-label" for="inlineCheckbox2">Basket</label>
+        <label class="form-check-label" for="Basket">Basket</label>
     </div>
     </div>
     <div class="col-sm-2">
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="kategori[]" id="Voli" value="Voli">
-        <label class="form-check-label" for="inlineCheckbox2">Voli</label>
+        <label class="form-check-label" for="Voli">Voli</label>
     </div>
     </div>
     </div>
@@ -42,19 +42,19 @@
     <div class="col-sm-2">
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="kategori[]" id="Bulutangkis" value="Bulutangkis">
-        <label class="form-check-label" for="inlineCheckbox2">Bulutangkis</label>
+        <label class="form-check-label" for="Bulutangkis">Bulutangkis</label>
     </div>
     </div>
     <div class="col-sm-2">
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="kategori[]" id="Bersepeda" value="Bersepeda">
-        <label class="form-check-label" for="inlineCheckbox2">Bersepeda</label>
+        <label class="form-check-label" for="Bersepeda">Bersepeda</label>
     </div>
     </div>
     <div class="col-sm-2">
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="kategori[]" id="Lain-lain" value="Lain-lain">
-        <label class="form-check-label" for="inlineCheckbox2">Lain-lain</label>
+        <label class="form-check-label" for="Lain-lain">Lain-lain</label>
     </div>
     </div>
     </div>
@@ -65,6 +65,7 @@
     <input type="submit" value="Terapkan" class="btn btn-primary" style="width: 100px">
     </div>
 </div>
+</form>
 <hr>
 
 @php
@@ -155,5 +156,4 @@
         }
     }
 </script>
-</form>
 @endsection

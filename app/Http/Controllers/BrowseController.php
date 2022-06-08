@@ -9,7 +9,17 @@ use Illuminate\Support\Carbon;
 
 class BrowseController extends Controller
 {
-    public function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function browse()
     {
         $user = Auth::user();
         $events = DB::table('eo')->where('kota', $user->kota)->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', $user->username)->orderBy('tanggal', 'asc')->orderBy('jam', 'asc')->get();
@@ -29,8 +39,8 @@ class BrowseController extends Controller
             return redirect('/browse');
         }
 
-        if(in_array('Sepak Bola/Futsal', $kategori)) {
-            $sbf_events = DB::table('eo')->where('kategori', 'Sepak Bola/Futsal')->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', $user->username)->where('kota', $user->kota)->get(); //sbf = sepak bola/futsal
+        if(in_array('Sepak bola/Futsal', $kategori)) {
+            $sbf_events = DB::table('eo')->where('kategori', 'Sepak bola/Futsal')->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', $user->username)->where('kota', $user->kota)->get(); //sbf = sepak bola/futsal
             foreach($sbf_events as $sbf) {
                 array_push($events, $sbf);
             }
@@ -87,4 +97,3 @@ class BrowseController extends Controller
         return redirect()->back()->with([ 'events' => $events, 'jumlahpartisipan' => $jumlahpartisipan]);
     }
 }
-

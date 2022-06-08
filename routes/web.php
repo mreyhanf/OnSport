@@ -10,12 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 Auth::routes();
+Route::get('/', 'HomeController@activeCreatedEventOlahraga');
 
 Route::get('/home', 'HomeController@activeCreatedEventOlahraga', 'HomeController@activeJoinedEventOlahraga');
 
@@ -62,6 +64,6 @@ Route::get('/event/edit/{idevent}','EditEventController@editEvent');
 Route::post('/event/update/{idevent}','EditEventController@update');
 
 //Show Events by Category (Browse) route
-Route::get('/browse', 'BrowseController@index');
+Route::get('/browse', 'BrowseController@browse');
 Route::post('/browse/filter', 'BrowseController@filter');
 

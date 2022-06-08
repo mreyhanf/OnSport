@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CreateEventsController extends Controller
 {
@@ -33,8 +34,11 @@ class CreateEventsController extends Controller
 
         // isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'events_image';
+        $namadanlokasi = '';
+        if(!empty($file)) {
+            $namadanlokasi = $tujuan_upload . "/" . $file->getClientOriginalName(); //teknik tanpa direname
+        }
 
-        $namadanlokasi = $tujuan_upload . "/" . $file->getClientOriginalName(); //teknik tanpa direname
 
 	// insert data ke table eo
 	$id = DB::table('eo')->insertGetId([
@@ -53,9 +57,10 @@ class CreateEventsController extends Controller
         'gambar' => $namadanlokasi
 	]);
 
-    // upload file
-    $file->move($tujuan_upload,$file->getClientOriginalName());
-
+    if(!empty($file)) {
+        // upload file
+        $file->move($tujuan_upload,$file->getClientOriginalName());
+    }
 
 	// alihkan halaman ke halaman event details_host
 	return redirect('/event/details/' . $id);

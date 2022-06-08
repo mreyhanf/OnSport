@@ -14,7 +14,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="" class="label-control">Judul Event</label>
-                                    <input type="string" name="judulevent" id="judulevent" class="form-control" placeholder="Masukan Judul Event">
+                                    <input type="string" name="judulevent" id="judulevent" class="form-control" placeholder="Masukan Judul Event" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Kategori</label>
@@ -32,7 +32,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="" class="label-control">Tanggal</label>
-                                        <input type="date" class="form-control" id="tanggal" placeholder="Pilih Tanggal" name="tanggal">
+                                        <input type="date" class="form-control" id="tanggal" placeholder="Pilih Tanggal" name="tanggal" style="background-color:white" required>
                                     </div>
                                     <script>
 
@@ -40,13 +40,13 @@
                                     </script>
                                     <div class="col">
                                         <label for="" class="label-control">Jam</label>
-                                        <input type="time" class="form-control" id="jam" placeholder="Pilih Jam" name="jam">
+                                        <input type="time" class="form-control" id="jam" placeholder="Pilih Jam" name="jam" required>
                                     </div>
                                 </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Lokasi</label>
-                                    <input type="string" name="lokasi" id="lokasi" class="form-control" placeholder="Masukan Lokasi">
+                                    <input type="string" name="lokasi" id="lokasi" class="form-control" placeholder="Masukan Lokasi" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Kota</label>
@@ -61,11 +61,11 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="" class="label-control">Range Umur Bawah</label>
-                                        <input type="number" class="form-control" id="rangeub" placeholder="Masukan Range Umur Bawah" name="rangeub">
+                                        <input type="number" class="form-control" id="rangeub" placeholder="Masukan Range Umur Bawah" name="rangeub" required>
                                     </div>
                                     <div class="col">
                                         <label for="" class="label-control">Range Umur Atas</label>
-                                        <input type="number" class="form-control" id="rangeua" placeholder="Masukan Range Umur Atas" name="rangeua">
+                                        <input type="number" class="form-control" id="rangeua" placeholder="Masukan Range Umur Atas" name="rangeua" required>
                                     </div>
                                 </div>
                                 </div>
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Kuota Partisipan (Tidak Bisa Diedit Sesudah Event Dipublish)</label>
-                                    <input type="number" name="kuotapartisipan" id="kuotapartisipan" class="form-control" placeholder="Masukan Kuota Partisipan">
+                                    <input type="number" name="kuotapartisipan" id="kuotapartisipan" class="form-control" placeholder="Masukan Kuota Partisipan" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Catatan</label>
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="customFile" class="label-control">Gambar</label>
-                                    <input type="file" name="gambar" class="form-control" id="customFile" />
+                                    <input type="file" name="gambar" class="form-control" id="customFile">
                                 </div>
                                 {{csrf_field()}}
                                 <input type="submit" value="Publish" class="btn btn-primary" style="width: 120px">
