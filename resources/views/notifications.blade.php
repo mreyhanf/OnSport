@@ -27,83 +27,84 @@
 @endif
 
 @if ($notifications->isNotEmpty())
-    @php
-        $notif_counter = 0;
-    @endphp
 @foreach ($notifications as $notif)
 @if ($notif->jenis == 1)
-        <div class="card" style="width: 80%; margin-bottom: 15px; margin: 0 auto">
+        <div class="card" style="width: 80%; margin: 0 auto; margin-bottom: 15px">
             <div class="card-body">
-                <h4>Penghapusan event untuk <strong>"{{$judulevent[$notif_counter]}}"</strong><h4>
+                <h4>Penghapusan event untuk <strong>"{{$notif->judulevent}}"</strong><h4>
             <p style="font-size: 15px">
-                {{'@' . $notif->usernamepg}} menghapus event "{{$judulevent[$notif_counter]}}" yang Anda ikuti sebelumnya.
+                {{'@' . $notif->usernamepg}} menghapus event "{{$notif->judulevent}}" yang Anda ikuti sebelumnya.
             </p>
+            <span class="text-muted" style="font-size: 0.9rem">{{ $notif->created_at }}</span>
             </div>
         </div>
     @endif
 @if ($notif->jenis == 2)
-        <div class="card" style="width: 80%; margin-bottom: 15px; margin: 0 auto">
+        <div class="card" style="width: 80%; margin: 0 auto; margin-bottom: 15px">
             <div class="card-body">
-                <h4>Pengeluaran dari event <strong>"{{$judulevent[$notif_counter]}}"</strong><h4>
+                <h4>Pengeluaran dari event <strong>"{{$notif->judulevent}}"</strong></h4>
             <p style="font-size: 15px">
-                {{'@' . $notif->usernamepg}} mengeluarkan Anda dari event "{{$judulevent[$notif_counter]}}".
+                {{'@' . $notif->usernamepg}} mengeluarkan Anda dari event "{{$notif->judulevent}}".
             </p>
+            <span class="text-muted" style="font-size: 0.9rem">{{ $notif->created_at }}</span>
             </div>
         </div>
     @endif
     @if ($notif->jenis == 3)
-        <div class="card" style="width: 80%; margin-bottom: 15px; margin: 0 auto">
+        <div class="card" style="width: 80%; margin: 0 auto; margin-bottom: 15px">
             <div class="card-body">
-                <h4>Penerimaan permintaan bergabung untuk event <strong>"{{$judulevent[$notif_counter]}}"</strong><h4>
+                <h4>Penerimaan permintaan bergabung untuk event <strong>"{{$notif->judulevent}}"</strong></h4>
             <p style="font-size: 15px">
-                {{'@' . $notif->usernamepg}} menerima Anda sebagai partisipan untuk event "{{$judulevent[$notif_counter]}}".
+                {{'@' . $notif->usernamepg}} menerima Anda sebagai partisipan untuk event "{{$notif->judulevent}}".
             </p>
+            <span class="text-muted" style="font-size: 0.9rem">{{ $notif->created_at }}</span>
             </div>
         </div>
     @endif
     @if ($notif->jenis == 4)
-        <div class="card" style="width: 80%; margin-bottom: 15px; margin: 0 auto">
+        <div class="card" style="width: 80%; margin: 0 auto; margin-bottom: 15px">
             <div class="card-body">
-                <h4>Penolakan permintaan bergabung untuk event <strong>"{{$judulevent[$notif_counter]}}"</strong><h4>
+                <h4>Penolakan permintaan bergabung untuk event <strong>"{{$notif->judulevent}}"</strong></h4>
             <p style="font-size: 15px">
-                {{'@' . $notif->usernamepg}} menolak Anda sebagai partisipan untuk event "{{$judulevent[$notif_counter]}}".
+                {{'@' . $notif->usernamepg}} menolak Anda sebagai partisipan untuk event "{{$notif->judulevent}}".
             </p>
+            <span class="text-muted" style="font-size: 0.9rem">{{ $notif->created_at }}</span>
             </div>
         </div>
     @endif
     @if ($notif->jenis == 5)
-        <div class="card" style="width: 80%; margin-bottom: 15px; margin: 0 auto">
+        <div class="card" style="width: 80%; margin: 0 auto; margin-bottom: 15px">
             <div class="card-body">
-                <h4>Permintaan bergabung untuk event <strong>"{{$judulevent[$notif_counter]}}"</strong><h4>
+                <h4>Permintaan bergabung untuk event <strong>"{{$notif->judulevent}}"</strong></h4>
             <p style="font-size: 15px">
-                {{'@' . $notif->usernamepg}} meminta bergabung pada event "{{$judulevent[$notif_counter]}}" yang Anda buat.
+                {{'@' . $notif->usernamepg}} meminta bergabung pada event "{{$notif->judulevent}}" yang Anda buat.
             </p>
+            <span class="text-muted" style="font-size: 0.9rem">{{ $notif->created_at }}</span>
             </div>
         </div>
     @endif
     @if ($notif->jenis == 6)
-        <div class="card" style="width: 80%; margin-bottom: 15px; margin: 0 auto">
+        <div class="card" style="width: 80%; margin: 0 auto; margin-bottom: 15px">
             <div class="card-body">
-                <h4>Perubahan detail untuk event <strong>"{{$judulevent[$notif_counter]}}"</strong><h4>
+                <h4>Perubahan detail untuk event <strong>"{{$notif->judulevent}}"</strong></h4>
             <p style="font-size: 15px">
-                {{'@' . $notif->usernamepg}} mengubah detail untuk event "{{$judulevent[$notif_counter]}}".
+                {{'@' . $notif->usernamepg}} mengubah detail untuk event "{{$notif->judulevent}}".
             </p>
+            <span class="text-muted" style="font-size: 0.9rem">{{ $notif->created_at }}</span>
             </div>
         </div>
     @endif
     @if ($notif->jenis == 7)
-    <div class="card" style="width: 80%; margin-bottom: 15px; margin: 0 auto">
+    <div class="card" style="width: 80%; margin: 0 auto; margin-bottom: 15px">
         <div class="card-body">
-            <h4>Pembatalan partisipasi untuk event <strong>"{{$judulevent[$notif_counter]}}"</strong><h4>
+            <h4>Pembatalan partisipasi untuk event <strong>"{{$notif->judulevent}}"</strong></h4>
         <p style="font-size: 15px">
-            {{'@' . $notif->usernamepg}} membatalkan partisipasinya pada event "{{$judulevent[$notif_counter]}}" yang Anda buat.
+            {{'@' . $notif->usernamepg}} membatalkan partisipasinya pada event "{{$notif->judulevent}}" yang Anda buat.
         </p>
+        <span class="text-muted" style="font-size: 0.9rem">{{ $notif->created_at }}</span>
         </div>
     </div>
 @endif
-    @php
-         $notif_counter++;
-    @endphp
 @endforeach
 @endif
 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class RemoveParticipantsController extends Controller
 {
@@ -47,12 +48,15 @@ class RemoveParticipantsController extends Controller
     public function createParticipantRemovalNotification($idevent, $usernamepn, $judulevent, $usernamepg) {
 
         $jenis = 2; //jenis notifikasi participant removal = 2
+        $timestamp = Carbon::now()->toDateTimeString();
+
         DB::table('notifikasi')->insert([
             'usernamepn' => $usernamepn,
             'jenis' => $jenis,
             'idevent' => $idevent,
             'judulevent' => $judulevent,
-            'usernamepg' => $usernamepg
+            'usernamepg' => $usernamepg,
+            'created_at' => $timestamp
         ]);
     }
 

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-<h3></h3>
+<h3 class="mb-4">User Information</h3>
 
 <div>
     @php

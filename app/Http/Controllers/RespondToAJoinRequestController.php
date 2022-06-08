@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class RespondToAJoinRequestController extends Controller
 {
@@ -93,12 +94,14 @@ class RespondToAJoinRequestController extends Controller
     public function createNotifikasiJoinRequestAccepted($idevent, $usernamepn, $judulevent, $usernamepg) {
 
         $jenis = 3; //jenis notifikasi join request accepted = 3
+        $timestamp = Carbon::now()->toDateTimeString();
         DB::table('notifikasi')->insert([
             'usernamepn' => $usernamepn,
             'jenis' => $jenis,
             'idevent' => $idevent,
             'judulevent' => $judulevent,
-            'usernamepg' => $usernamepg
+            'usernamepg' => $usernamepg,
+            'created_at' => $timestamp
         ]);
     }
 
@@ -156,12 +159,14 @@ class RespondToAJoinRequestController extends Controller
     public function createNotifikasiJoinRequestDeclined($idevent, $usernamepn, $judulevent, $usernamepg) {
 
         $jenis = 4; //jenis notifikasi join request declined = 4
+        $timestamp = Carbon::now()->toDateTimeString();
         DB::table('notifikasi')->insert([
             'usernamepn' => $usernamepn,
             'jenis' => $jenis,
             'idevent' => $idevent,
             'judulevent' => $judulevent,
-            'usernamepg' => $usernamepg
+            'usernamepg' => $usernamepg,
+            'created_at' => $timestamp
         ]);
     }
 

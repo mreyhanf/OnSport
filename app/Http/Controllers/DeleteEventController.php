@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class DeleteEventController extends Controller
 {
@@ -47,13 +48,15 @@ class DeleteEventController extends Controller
     public function createDeleteEventNotification($idevent, $partisipan, $calonpartisipan, $judulevent, $usernamepg) {
 
         $jenis = 1; //jenis notifikasi delete event = 1
+        $timestamp = Carbon::now()->toDateTimeString();
         foreach ($partisipan as $p) {
             DB::table('notifikasi')->insert([
                 'usernamepn' => $p->username,
                 'jenis' => $jenis,
                 'idevent' => $idevent,
                 'judulevent' => $judulevent,
-                'usernamepg' => $usernamepg
+                'usernamepg' => $usernamepg,
+                'created_at' => $timestamp
             ]);
         }
 
@@ -63,7 +66,8 @@ class DeleteEventController extends Controller
                 'jenis' => $jenis,
                 'idevent' => $idevent,
                 'judulevent' => $judulevent,
-                'usernamepg' => $usernamepg
+                'usernamepg' => $usernamepg,
+                'created_at' => $timestamp
             ]);
         }
 

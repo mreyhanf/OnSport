@@ -61,10 +61,10 @@
     @endphp
 
     <div>
-        <a href="/user/{{ $host[0]->username }}" class="mr-3" style="color: white; text-decoration: none">
+        <a href="/user/{{ $host[0]->username }}" target="_blank" class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarhost }}" alt="" width="70px" class="rounded-circle">
         </a>
-        <a href="/user/{{ $host[0]->username }}" style="color: black; text-decoration: none">
+        <a href="/user/{{ $host[0]->username }}" target="_blank" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                     {{'@' . $host[0]->username . ' - ' . $host[0]->name }}
             </span>
@@ -192,10 +192,10 @@
 @endphp
 <div class="row mb-4">
     <div class="col-sm-12 col-md-8">
-        <a href="/user/{{ $up->username }}" class="mr-3" style="color: white; text-decoration: none">
+        <a href="/user/{{ $up->username }}" target="_blank" class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarpartisipan }}" alt="" width="70px" class="rounded-circle">
         </a>
-        <a href="/user/{{ $up->username }}" style="color: black; text-decoration: none">
+        <a href="/user/{{ $up->username }}" target="_blank" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                     {{'@' . $up->username . ' - ' . $up->name }}
             </span>
@@ -264,10 +264,10 @@
 @endphp
 <div class="row mb-4">
     <div class="col-sm-12 col-md-8">
-        <a href="/user/{{ $ucp->username }}" class="mr-3" style="color: white; text-decoration: none">
+        <a href="/user/{{ $ucp->username }}" target="_blank" class="mr-3" style="color: white; text-decoration: none">
             <img src="/{{ $gambarcalonpartisipan }}" alt="" width="70px" class="rounded-circle">
         </a>
-        <a href="/user/{{ $ucp->username }}" style="color: black; text-decoration: none">
+        <a href="/user/{{ $ucp->username }}" target="_blank" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
                     {{'@' . $ucp->username . ' - ' . $ucp->name }}
             </span>

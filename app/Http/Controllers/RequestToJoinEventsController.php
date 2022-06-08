@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class RequestToJoinEventsController extends Controller
 {
@@ -54,12 +55,14 @@ class RequestToJoinEventsController extends Controller
      */
     public function createJoinEventNotification($idevent, $usernamepn, $judulevent, $usernamepg) {
         $jenis = 5; //jenis notifikasi join event = 5
+        $timestamp = Carbon::now()->toDateTimeString();
         DB::table('notifikasi')->insert([
             'usernamepn' => $usernamepn,
             'jenis' => $jenis,
             'idevent' => $idevent,
             'judulevent' => $judulevent,
-            'usernamepg' => $usernamepg
+            'usernamepg' => $usernamepg,
+            'created_at' => $timestamp
         ]);
     }
 }
