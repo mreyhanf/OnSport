@@ -11,73 +11,51 @@
 @section('stylecolortext_profile', 'white')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8" style="padding-bottom: 15px">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="container">
 
     <h3 style="padding: 8px; font-weight: bold;">Active Events</h3>
 
-    @if ($events->isEmpty()) <!-- ($events->isEmpty()) -->
-    <div style="padding: 15px;
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);">
-        <span style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
-    </div>
+    <div>
+        <h4 style="padding: 8px; font-weight: bold;">Created</h4>
 
+    @if ($eventscreated->isEmpty()) <!-- ($events->isEmpty()) -->
+    <div class="d-flex justify-content-center">
+        <span class="p-4" style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
+    </div>
 @endif
-@if ($events->isNotEmpty()) <!-- ($events->isNotEmpty()) -->
+@if ($eventscreated->isNotEmpty()) <!-- ($events->isNotEmpty()) -->
     @php
-    $carddeckamount = ceil($events->count() / 3); // jumlah card-deck atau baris
-    $eventsindex = 0;
-    $lasteventsindex = $events->count() - 1;
+    $carddeckamount = ceil($eventscreated->count() / 3); // jumlah card-deck atau baris
+    $eventscreatedindex = 0;
+    $lasteventscreatedindex = $eventscreated->count() - 1;
     for ($i = 1; $i <= $carddeckamount; $i++) {
         echo '<div class="row card-deck mb-4">';
-        for ($j = $eventsindex; $j <= $eventsindex + 2 && $j <= $lasteventsindex; $j++) {
+        for ($j = $eventscreatedindex; $j <= $eventscreatedindex + 2 && $j <= $lasteventscreatedindex; $j++) {
             // card deck consisting of 3 cards max
-                $gambar = $events[$j]->gambar == "" ? "events_image/events_placeholder.png" :  $events[$j]->gambar;
-                $judul = strlen($events[$j]->judulevent) > 21 ? substr($events[$j]->judulevent, 0, 21) . "..." : $events[$j]->judulevent;
+                $gambar = $eventscreated[$j]->gambar == "" ? "events_image/events_placeholder.png" :  $eventscreated[$j]->gambar;
+                $judul = strlen($eventscreated[$j]->judulevent) > 21 ? substr($eventscreated[$j]->judulevent, 0, 21) . "..." : $eventscreated[$j]->judulevent;
                 echo '<div class="col-sm-12 col-xl-4">
                 <div class="card" style="min-height: 324px; max-width: 400px; min-width: 200px">
-                    <a href="/event/details/' . $events[$j]->idevent . '">
+                    <a href="/event/details/' . $eventscreated[$j]->idevent . '">
                         <img class="card-img-top" src="/' . $gambar . '" alt="" height="178">
                     </a>
                     <div class="card-body">
-                        <h5 class="card-title" style="letter-spacing: 0.2px; font-weight: bolder"><a href="/event/details/' . $events[$j]->idevent . '" style="text-decoration: none; color: rgb(29, 153, 255)">' . $judul . '</a></h5>
+                        <h5 class="card-title" style="letter-spacing: 0.2px; font-weight: bolder"><a href="/event/details/' . $eventscreated[$j]->idevent . '" style="text-decoration: none; color: rgb(29, 153, 255)">' . $judul . '</a></h5>
                         <div class="row">
                             <div class="col-6">
-                                <small>Kategori: ' . $events[$j]->kategori . '</small>
+                                <small>Kategori: ' . $eventscreated[$j]->kategori . '</small>
                             </div>
                             <div class="col-6">
-                                <small>Tanggal: ' . date('d-m-Y', strtotime($events[$j]->tanggal)) . '</small>
+                                <small>Tanggal: ' . date('d-m-Y', strtotime($eventscreated[$j]->tanggal)) . '</small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <small>Slot: ' . $jumlahpartisipan[$j] . '/' . $events[$j]->kuotapartisipan . '</small>
+                                <small>Slot: ' . $jumlahpartisipancreated[$j] . '/' . $eventscreated[$j]->kuotapartisipan . '</small>
                             </div>
                             <div class="col-6">
-                                <small>Level: ' . $events[$j]->levelkeahlian . '</small>
+                                <small>Level: ' . $eventscreated[$j]->levelkeahlian . '</small>
                             </div>
                         </div>
                     </div>
@@ -85,14 +63,118 @@
                 </div>';
         }
         echo '</div>';
-        $eventsindex += 3;
+        $eventscreatedindex += 3;
     }
     @endphp
 @endif
+</div>
+
+<div>
+    <h4 style="padding: 8px; font-weight: bold;">Joined</h4>
+    @if (count($eventsjoined) == 0)
+    <div class="d-flex justify-content-center">
+        <span class="p-4" style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
+    </div>
+
+@endif
+@if (count($eventsjoined) > 0)
+    @php
+    $carddeckamount = ceil(count($eventsjoined) / 3); // jumlah card-deck atau baris
+    $eventsjoinedindex = 0;
+    $lasteventsjoinedindex = count($eventsjoined) - 1;
+    for ($i = 1; $i <= $carddeckamount; $i++) {
+        echo '<div class="row card-deck mb-4">';
+        for ($j = $eventsjoinedindex; $j <= $eventsjoinedindex + 2 && $j <= $lasteventsjoinedindex; $j++) {
+            // card deck consisting of 3 cards max
+                $gambar = $eventsjoined[$j]->gambar == "" ? "events_image/events_placeholder.png" :  $eventsjoined[$j]->gambar;
+                $judul = strlen($eventsjoined[$j]->judulevent) > 21 ? substr($eventsjoined[$j]->judulevent, 0, 21) . "..." : $eventsjoined[$j]->judulevent;
+                echo '<div class="col-sm-12 col-xl-4">
+                <div class="card" style="min-height: 324px; max-width: 400px; min-width: 200px">
+                    <a href="/event/details/' . $eventsjoined[$j]->idevent . '">
+                        <img class="card-img-top" src="/' . $gambar . '" alt="" height="178">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" style="letter-spacing: 0.2px; font-weight: bolder"><a href="/event/details/' . $eventsjoined[$j]->idevent . '" style="text-decoration: none; color: rgb(29, 153, 255)">' . $judul . '</a></h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <small>Kategori: ' . $eventsjoined[$j]->kategori . '</small>
+                            </div>
+                            <div class="col-6">
+                                <small>Tanggal: ' . date('d-m-Y', strtotime($eventsjoined[$j]->tanggal)) . '</small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <small>Slot: ' . $jumlahpartisipanjoined[$j] . '/' . $eventsjoined[$j]->kuotapartisipan . '</small>
+                            </div>
+                            <div class="col-6">
+                                <small>Level: ' . $eventsjoined[$j]->levelkeahlian . '</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>';
+        }
+        echo '</div>';
+        $eventsjoinedindex += 3;
+    }
+    @endphp
+@endif
+</div>
 
 <hr />
 
-<h3 style="padding: 15px; font-weight: bold ">Recommendations</h3>
+<div>
+<h3 style="padding: 8px; font-weight: bold ">Recommendations</h3>
+@if ($eventsrec->isEmpty()) <!-- ($events->isEmpty()) -->
+<div class="d-flex justify-content-center">
+    <span class="p-4" style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
+</div>
+@endif
+@if ($eventsrec->isNotEmpty()) <!-- ($events->isNotEmpty()) -->
+@php
+$carddeckamount = ceil($eventsrec->count() / 3); // jumlah card-deck atau baris
+$eventsrecindex = 0;
+$lasteventsrecindex = $eventsrec->count() - 1;
+for ($i = 1; $i <= $carddeckamount; $i++) {
+    echo '<div class="row card-deck mb-4">';
+    for ($j = $eventsrecindex; $j <= $eventsrecindex + 2 && $j <= $lasteventsrecindex; $j++) {
+        // card deck consisting of 3 cards max
+            $gambar = $eventsrec[$j]->gambar == "" ? "events_image/events_placeholder.png" :  $eventsrec[$j]->gambar;
+            $judul = strlen($eventsrec[$j]->judulevent) > 21 ? substr($eventsrec[$j]->judulevent, 0, 21) . "..." : $eventsrec[$j]->judulevent;
+            echo '<div class="col-sm-12 col-xl-4">
+            <div class="card" style="min-height: 324px; max-width: 400px; min-width: 200px">
+                <a href="/event/details/' . $eventsrec[$j]->idevent . '">
+                    <img class="card-img-top" src="/' . $gambar . '" alt="" height="178">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title" style="letter-spacing: 0.2px; font-weight: bolder"><a href="/event/details/' . $eventsrec[$j]->idevent . '" style="text-decoration: none; color: rgb(29, 153, 255)">' . $judul . '</a></h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Kategori: ' . $eventsrec[$j]->kategori . '</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Tanggal: ' . date('d-m-Y', strtotime($eventsrec[$j]->tanggal)) . '</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <small>Slot: ' . $jumlahpartisipanrec[$j] . '/' . $eventsrec[$j]->kuotapartisipan . '</small>
+                        </div>
+                        <div class="col-6">
+                            <small>Level: ' . $eventsrec[$j]->levelkeahlian . '</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>';
+    }
+    echo '</div>';
+    $eventsrecindex += 3;
+}
+@endphp
+@endif
+</div>
 
 </div>
 
@@ -120,3 +202,4 @@
 </script>
 
 @endsection
+
