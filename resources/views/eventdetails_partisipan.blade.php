@@ -60,7 +60,7 @@
 
     <div>
         <a href="/user/{{ $host[0]->username }}" target="_blank" class="mr-3" style="color: white; text-decoration: none">
-            <img src="/{{ $gambarhost }}" alt="" width="70px" class="rounded-circle">
+            <img src="/{{ $gambarhost }}" alt="" width="70px" height=70px border-radius= 100% class="rounded-circle">
         </a>
         <a href="/user/{{ $host[0]->username }}" target="_blank" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
@@ -191,7 +191,7 @@
 <div class="row mb-4">
     <div class="col-sm-12">
         <a href="/user/{{ $up->username }}" target="_blank" class="mr-3" style="color: white; text-decoration: none">
-            <img src="/{{ $gambarpartisipan }}" alt="" width="70px" class="rounded-circle">
+            <img src="/{{ $gambarpartisipan }}" alt="" width="70px" height=70px border-radius= 100% class="rounded-circle">
         </a>
         <a href="/user/{{ $up->username }}" target="_blank" style="color: black; text-decoration: none">
             <span style="font-size: 1.3em">
