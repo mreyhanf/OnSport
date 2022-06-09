@@ -19,7 +19,7 @@ class CreateEventsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function showCreateEvents()
     {
         return view('createevents');
     }
