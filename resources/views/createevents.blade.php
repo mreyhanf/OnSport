@@ -23,7 +23,7 @@
                                         <option name="kategori" value="Sepak bola/Futsal">Sepak bola/Futsal</option>
                                         <option name="kategori" value="Basket">Basket</option>
                                         <option name="kategori" value="Voli">Voli</option>
-                                        <option name="kategori" value="Bulutangkis">Bulutangkis</option>
+                                        <option name="kategori" value="Bulu tangkis">Bulu tangkis</option>
                                         <option name="kategori" value="Bersepeda">Bersepeda</option>
                                         <option name="kategori" value="Lain-lain">Lain-lain</option>
                                     </select>
