@@ -77,6 +77,12 @@
 @endphp
 
 <div class="container">
+    <div class="alert alert-info alert-dismissible fade show" role="alert" style="text-align: center">
+        <strong>Hanya event yang aktif (belum sampai jadwal) dan berlokasi di kota Anda yang ditampilkan di halaman ini. Ubah kota di profile Anda untuk melihat event di kota lain.</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <div>
     @if (empty($events))
     <div style="padding: 15px;

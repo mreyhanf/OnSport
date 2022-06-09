@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="col-sm-1"></div>
                                 <div class="form-group row">
-                                    <label for="username" class="col-sm-3 col-form-label">Username</label>
+                                    <label for="username" class="col-sm-3 col-form-label">Username <span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <input type="string" name="username" value="{{ $userinfo->username }}" id="username" class="form-control @error('username') is-invalid @enderror" placeholder="Masukkan Username" required>
                                         @error('username')
@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-3 col-form-label">Nama</label>
+                                    <label for="name" class="col-sm-3 col-form-label">Nama <span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <input type="string" name="name" value="{{ $userinfo->name }}" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Namamu" required>
                                         @error('name')
@@ -57,7 +57,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="kota" class="col-sm-3 col-form-label">Kota</label>
+                                    <label for="kota" class="col-sm-3 col-form-label">Kota <span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <select name="kota" type="select" class="form-control @error('kota') is-invalid @enderror" class="kota" value="{{ $userinfo->kota }}" required>
                                             <option value="" selected disabled hidden>Pilih Kotamu</option>
@@ -74,7 +74,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="gender" class="col-sm-3 col-form-label">Gender</label>
+                                    <label for="gender" class="col-sm-3 col-form-label">Gender <span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <select name="gender" type="select" class="form-control @error('gender') is-invalid @enderror" class="gender" value="{{ $userinfo->kota }}" required>
                                             <option value="" selected disabled hidden>Pilih Gender</option>
@@ -91,7 +91,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="tanggallahir" class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                    <label for="tanggallahir" class="col-sm-3 col-form-label">Tanggal Lahir <span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <input type="date" name="tanggallahir" value="{{ $userinfo->tanggallahir }}" id="tanggallahir" class="form-control @error('tanggallahir') is-invalid @enderror" placeholder="Masukkan Tanggal Lahir" required>
                                         @error('tanggallahir')
@@ -103,7 +103,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="akunmedsos" class="col-sm-3 col-form-label">Media Sosial</label>
+                                    <label for="akunmedsos" class="col-sm-3 col-form-label">Media Sosial <span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <input type="string" name="akunmedsos" value="{{ $userinfo->akunmedsos }}" id="akunmedsos" class="form-control @error('akunmedsos') is-invalid @enderror" placeholder="Masukkan Akun Media Sosial atau Kontakmu" >
                                         @error('akunmedsos')
@@ -170,7 +170,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group row">
-                                    <label for="customFile" class="col-sm-3 col-form-label">Photo Profile</label>
+                                    <label for="customFile" class="col-sm-3 col-form-label">Photo Profile <span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" id="customFile">
                                         @error('gambar')
