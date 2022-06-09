@@ -80,7 +80,7 @@ class HomeController extends Controller
         foreach($preferensiolahraga as $prefor) {
             array_push($kategori, $prefor->kategori);
         }
-        $event_recommendation = DB::table('eo')->whereIn('kategori', $kategori)->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', $user->username)->take(9)->get();
+        $event_recommendation = DB::table('eo')->whereIn('kategori', $kategori)->where('kota', $user->kota)->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', $user->username)->take(9)->get();
         $jumlahpartisipan = [];
         foreach ($event_recommendation as $eventrec) { //currently pakai yang dari eo alternatif 2
             $partisipan = DB::table('partisipan')->where('idevent', $eventrec->idevent)->count();
