@@ -66,7 +66,7 @@
         :
     </div>
     <div class="col-sm-9" id="tanggallahir" style="font-size: 1.3em">
-        {{ $userinfo->tanggallahir }}
+        {{ date('d F Y', strtotime($userinfo->tanggallahir)) }}
     </div>
 </div>
 <div class="form-group row">
