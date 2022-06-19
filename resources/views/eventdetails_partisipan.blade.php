@@ -92,7 +92,7 @@
         :
     </div>
     <div class="col-sm-9" id="tanggal" style="font-size: 1.3em">
-        {{ $ed->tanggal }}
+        {{ date('d F Y', strtotime($ed->tanggal)) }}
     </div>
 </div>
 <div class="form-group row">

@@ -41,8 +41,8 @@
     <div class="row">
     <div class="col-sm-2">
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="kategori[]" id="Bulutangkis" value="Bulutangkis">
-        <label class="form-check-label" for="Bulutangkis">Bulutangkis</label>
+        <input class="form-check-input" type="checkbox" name="kategori[]" id="Bulutangkis" value="Bulu tangkis">
+        <label class="form-check-label" for="Bulutangkis">Bulu tangkis</label>
     </div>
     </div>
     <div class="col-sm-2">
