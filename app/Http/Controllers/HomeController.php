@@ -57,15 +57,22 @@ class HomeController extends Controller
         $eventpartisipan = [];
         foreach($ideventpartisipan as $ideventpar) {
             $eventdata = DB::table('eo')->where('idevent', $ideventpar->idevent)->where('tanggal', '>=', Carbon::today())->first();
-            array_push($eventpartisipan, $eventdata);
+            if(!is_null($eventdata)) {
+                array_push($eventpartisipan, $eventdata);
+            }
         }
-        usort($eventpartisipan, function($a, $b) {
-            return strcmp($a->tanggal, $b->tanggal);
-        });
+        if(!empty($eventpartisipan) && count($eventpartisipan) > 1) {
+            usort($eventpartisipan, function($a, $b) {
+                return strcmp($a->tanggal, $b->tanggal);
+            });
+        }
+
         $jumlahpartisipan = [];
-        foreach ($eventpartisipan as $eventpar) { //currently pakai yang dari eo alternatif 2
-            $partisipan = DB::table('partisipan')->where('idevent', $eventpar->idevent)->count();
-            array_push($jumlahpartisipan, $partisipan);
+        if(!empty($eventpartisipan)) {
+            foreach ($eventpartisipan as $eventpar) { //currently pakai yang dari eo alternatif 2
+                $partisipan = DB::table('partisipan')->where('idevent', $eventpar->idevent)->count();
+                array_push($jumlahpartisipan, $partisipan);
+            }
         }
         $joinedEventDanJumlahPartisipan = [$eventpartisipan, $jumlahpartisipan];
 
