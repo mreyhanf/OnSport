@@ -25,7 +25,7 @@
                                         <option @if($ed->kategori == 'Sepak bola/Futsal') {{ 'selected' }} @endif name="kategori" value="Sepak bola/Futsal">Sepak bola/Futsal</option>
                                         <option @if($ed->kategori == 'Basket') {{ 'selected' }} @endif name="kategori" value="Basket">Basket</option>
                                         <option @if($ed->kategori == 'Voli') {{ 'selected' }} @endif name="kategori" value="Voli">Voli</option>
-                                        <option @if($ed->kategori == 'Bulutangkis') {{ 'selected' }} @endif name="kategori" value="Bulutangkis">Bulutangkis</option>
+                                        <option @if($ed->kategori == 'Bulutangkis') {{ 'selected' }} @endif name="kategori" value="Bulu tangkis">Bulu tangkis</option>
                                         <option @if($ed->kategori == 'Bersepeda') {{ 'selected' }} @endif name="kategori" value="Bersepeda">Bersepeda</option>
                                         <option @if($ed->kategori == 'Lain-lain') {{ 'selected' }} @endif name="kategori" value="Lain-lain">Lain-lain</option>
                                     </select>
