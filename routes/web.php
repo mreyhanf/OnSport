@@ -76,3 +76,4 @@ Route::post('/profile/update', 'EditProfileController@update');
 
 //Show Profil
 Route::get('/profile', 'ProfileController@getProfile');
+

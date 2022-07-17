@@ -25,7 +25,8 @@ class HomeController extends Controller
     public function activeCreatedEventOlahraga()
     {
         $user = Auth::user();
-        $eventscreated = DB::table('eo')->where('usernamehost', $user->username)->where('tanggal', '>=', Carbon::today())->orderBy('tanggal', 'asc')->orderBy('jam', 'asc')->get();
+        $eventscreated = DB::table('eo')->where('usernamehost', $user->username)->where('tanggal', '>=', 
+Carbon::today())->orderBy('tanggal', 'asc')->orderBy('jam', 'asc')->get();
         $jumlahpartisipancreated = [];
         foreach ($eventscreated as $event) {
             $partisipan = DB::table('partisipan')->where('idevent', $event->idevent)->count();
@@ -39,7 +40,9 @@ class HomeController extends Controller
         $eventsrec = $recEventDanJumlahPartisipan[0];
         $jumlahpartisipanrec = $recEventDanJumlahPartisipan[1];
 
-        return view('home',['eventscreated' => $eventscreated,'jumlahpartisipancreated' => $jumlahpartisipancreated, 'eventsjoined' => $eventsjoined,'jumlahpartisipanjoined' => $jumlahpartisipanjoined, 'eventsrec' => $eventsrec,'jumlahpartisipanrec' => $jumlahpartisipanrec]);
+        return view('home',['eventscreated' => $eventscreated,'jumlahpartisipancreated' => 
+$jumlahpartisipancreated, 'eventsjoined' => $eventsjoined,'jumlahpartisipanjoined' => $jumlahpartisipanjoined, 
+'eventsrec' => $eventsrec,'jumlahpartisipanrec' => $jumlahpartisipanrec]);
 
     }
 
@@ -56,7 +59,8 @@ class HomeController extends Controller
         $ideventpartisipan = DB::table('partisipan')->where('username', $user->username)->get();
         $eventpartisipan = [];
         foreach($ideventpartisipan as $ideventpar) {
-            $eventdata = DB::table('eo')->where('idevent', $ideventpar->idevent)->where('tanggal', '>=', Carbon::today())->first();
+            $eventdata = DB::table('eo')->where('idevent', $ideventpar->idevent)->where('tanggal', '>=', 
+Carbon::today())->first();
             if(!is_null($eventdata)) {
                 array_push($eventpartisipan, $eventdata);
             }
@@ -87,7 +91,9 @@ class HomeController extends Controller
         foreach($preferensiolahraga as $prefor) {
             array_push($kategori, $prefor->kategori);
         }
-        $event_recommendation = DB::table('eo')->whereIn('kategori', $kategori)->where('kota', $user->kota)->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', $user->username)->take(9)->get();
+        $event_recommendation = DB::table('eo')->whereIn('kategori', $kategori)->where('kota', 
+$user->kota)->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', 
+$user->username)->take(9)->get();
         $jumlahpartisipan = [];
         foreach ($event_recommendation as $eventrec) { //currently pakai yang dari eo alternatif 2
             $partisipan = DB::table('partisipan')->where('idevent', $eventrec->idevent)->count();
@@ -99,4 +105,5 @@ class HomeController extends Controller
     }
 
 }
+
 
