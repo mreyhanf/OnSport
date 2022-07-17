@@ -31,8 +31,8 @@
     <div class="d-flex justify-content-center">
         <span class="p-4" style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
     </div>
-@endif
-@if ($eventscreated->isNotEmpty()) <!-- ($events->isNotEmpty()) -->
+    @endif
+    @if ($eventscreated->isNotEmpty()) <!-- ($events->isNotEmpty()) -->
     @php
     $carddeckamount = ceil($eventscreated->count() / 3); // jumlah card-deck atau baris
     $eventscreatedindex = 0;
@@ -74,7 +74,7 @@
         $eventscreatedindex += 3;
     }
     @endphp
-@endif
+    @endif
 </div>
 
 <div>
@@ -84,8 +84,8 @@
         <span class="p-4" style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
     </div>
 
-@endif
-@if (count($eventsjoined) > 0)
+    @endif
+    @if (count($eventsjoined) > 0)
     @php
     $carddeckamount = ceil(count($eventsjoined) / 3); // jumlah card-deck atau baris
     $eventsjoinedindex = 0;
@@ -127,10 +127,10 @@
         $eventsjoinedindex += 3;
     }
     @endphp
-@endif
+    @endif
 </div>
 
-<hr />
+<hr>
 
 <div>
 <h3 style="padding: 8px; font-weight: bold ">Recommendations</h3>

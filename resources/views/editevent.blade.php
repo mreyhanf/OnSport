@@ -9,19 +9,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit Event</div>
+                <div class="card-header" style="font-weight: 900">Edit Event</div>
                     <div class="card-body">
                         <div class="col-sm-1"></div>
                             <div class="col-sm-12">
                                 <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
                                 <div class="form-group">
                                     <label for="" class="label-control">Judul Event</label>
-                                    <input type="string" name="judulevent" value="{{ $ed->judulevent }}" id="judulevent" class="form-control" placeholder="Masukan Judul Event" required>
+                                    <input type="string" name="judulevent" value="{{ $ed->judulevent }}" id="judulevent" class="form-control" placeholder="Masukkan judul event" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Kategori</label>
-                                    <select name="kategori" class="form-control" value="{{ $ed->kategori }}" placeholder="Pilih Kategori" required>
-                                        <option value="" disabled >Pilih Kategori</option>
+                                    <select name="kategori" class="form-control" value="{{ $ed->kategori }}" placeholder="Pilih kategori" required>
+                                        <option value="" disabled >Pilih kategori</option>
                                         <option @if($ed->kategori == 'Sepak bola/Futsal') {{ 'selected' }} @endif name="kategori" value="Sepak bola/Futsal">Sepak bola/Futsal</option>
                                         <option @if($ed->kategori == 'Basket') {{ 'selected' }} @endif name="kategori" value="Basket">Basket</option>
                                         <option @if($ed->kategori == 'Voli') {{ 'selected' }} @endif name="kategori" value="Voli">Voli</option>
@@ -34,26 +34,23 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="" class="label-control">Tanggal</label>
-                                        <input type="date" class="form-control" id="tanggal" value="{{ $ed->tanggal }}" placeholder="Pilih Tanggal" name="tanggal"
+                                        <input type="date" class="form-control" id="tanggal" value="{{ $ed->tanggal }}" placeholder="Pilih tanggal" name="tanggal"
                                         style="background-color:white" required>
                                     </div>
-                                    <script>
-                                        flatpickr("#tanggal", {});
-                                    </script>
                                     <div class="col">
                                         <label for="" class="label-control">Jam</label>
-                                        <input type="time" class="form-control" id="jam" value="{{ $ed->jam }}" placeholder="Pilih Jam" name="jam" required>
+                                        <input type="time" class="form-control" id="jam" value="{{ $ed->jam }}" placeholder="Pilih jam" name="jam" required>
                                     </div>
                                 </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Lokasi</label>
+                                    <label for="">Lokasi <span class="badge badge-info">Informasi lokasi yang detail dapat memudahkan partisipan mengikuti event</span></label>
                                     <input type="string" name="lokasi" id="lokasi" class="form-control" value="{{ $ed->lokasi }}" placeholder="Masukan Lokasi" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Kota</label>
-                                    <select name="kota" class="form-control" value="{{ $ed->kota }}" placeholder="Pilih Kota" required>
-                                        <option value="" disabled >Pilih Kota</option>
+                                    <select name="kota" class="form-control" value="{{ $ed->kota }}" placeholder="Pilih kota" required>
+                                        <option value="" disabled >Pilih kota</option>
                                         <option @if($ed->kota == 'Surabaya') {{ 'selected' }} @endif name="kota" value="Surabaya">Surabaya</option>
                                         <option @if($ed->kota == 'Sidoarjo') {{ 'selected' }} @endif name="kota" value="Sidoarjo">Sidoarjo</option>
                                         <option @if($ed->kota == 'Gresik') {{ 'selected' }} @endif name="kota" value="Gresik">Gresik</option>
@@ -62,31 +59,31 @@
                                 <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="" class="label-control">Range Umur Bawah</label>
-                                        <input type="number" class="form-control" id="rangeub" value="{{ $ed->rangeub }}" placeholder="Masukan Range Umur Bawah" name="rangeub" required>
+                                        <label for="" class="label-control">Batas Bawah Umur</label>
+                                        <input type="number" class="form-control" id="rangeub" value="{{ $ed->rangeub }}" placeholder="Masukkan batas bawah umur" name="rangeub" required>
                                     </div>
                                     <div class="col">
-                                        <label for="" class="label-control">Range Umur Atas</label>
-                                        <input type="number" class="form-control" id="rangeua" value="{{ $ed->rangeua }}" placeholder="Masukan Range Umur Atas" name="rangeua" required>
+                                        <label for="" class="label-control">Batas Atas Umur</label>
+                                        <input type="number" class="form-control" id="rangeua" value="{{ $ed->rangeua }}" placeholder="Masukkan batas atas umur" name="rangeua" required>
                                     </div>
                                 </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Level Keahlian</label>
-                                    <select name="levelkeahlian" class="form-control" value="{{ $ed->levelkeahlian }}" placeholder="Pilih Level Keahlian" required>
-                                        <option value="" disabled >Pilih Level Keahlian</option>
+                                    <select name="levelkeahlian" class="form-control" value="{{ $ed->levelkeahlian }}" placeholder="Pilih Level keahlian" required>
+                                        <option value="" disabled >Pilih level keahlian</option>
+                                        <option @if($ed->levelkeahlian == 'All') {{ 'selected' }} @endif name="levelkeahlian" value="All">All</option>
                                         <option @if($ed->levelkeahlian == 'Beginner') {{ 'selected' }} @endif name="levelkeahlian" value="Beginner">Beginner</option>
                                         <option @if($ed->levelkeahlian == 'Intermediate') {{ 'selected' }} @endif name="levelkeahlian" value="Intermediate">Intermediate</option>
                                         <option @if($ed->levelkeahlian == 'Advanced') {{ 'selected' }} @endif name="levelkeahlian" value="Advanced">Advanced</option>
-                                        <option @if($ed->levelkeahlian == 'All') {{ 'selected' }} @endif name="levelkeahlian" value="All">All</option>
                                     </select>
                                 </div>
                                 <div class="">
-                                    <label for="" class="label-control">Kuota Partisipan: {{ $ed->kuotapartisipan }} </label>
+                                    <label for="" class="label-control">Kuota Partisipan: <strong>{{ $ed->kuotapartisipan }}</strong> </label>
                                 </div>
                                 <div class="form-group">
-                                    <label for="" class="label-control">Catatan</label>
-                                    <textarea name="catatan" class="form-control" value="{{ $ed->catatan }}" placeholder="Opsional" cols="30" rows="8"></textarea>
+                                    <label for="" class="label-control">Catatan <span class="badge badge-info">Opsional</span></label>
+                                    <textarea name="catatan" class="form-control" value="{{ $ed->catatan }}" placeholder="Masukkan catatan atau informasi tambahan (opsional)" cols="30" rows="8"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="customFile" class="label-control">Gambar</label>

@@ -47,9 +47,9 @@ class EditProfileController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:20'],
+            'username' => ['required', 'string', 'max:20', 'unique:users,username'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'tanggallahir'=> ['required'],
             'gender'=> ['required'],
             'kota' => ['required'],
@@ -64,6 +64,23 @@ class EditProfileController extends Controller
     {
         $user = Auth::user();
         $date = date('Y-m-d', strtotime($request->tanggallahir));
+
+
+        $error_array = array();
+        if (DB::table('users')->where('username', $request->username)->where('id', '<>', Auth::id())->exists()) {
+            $error_message_username = "The entered username already exists.";
+           array_push($error_array, $error_message_username);
+        }
+
+        if (DB::table('users')->where('email', $request->email)->where('id', '<>', Auth::id())->exists()) {
+            $error_message_email = "The entered email is already used.";
+            array_push($error_array, $error_message_email);
+        }
+
+        if (!empty($error_array)) {
+            return redirect()->back()->with(['error_messages' => $error_array]);
+        }
+
         // menyimpan data file gambar yang diupload ke variabel $file
 		$file = $request->file('gambar');
 

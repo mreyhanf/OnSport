@@ -19,11 +19,24 @@
             <div class="card">
                 <div class="card-header"><strong>Edit Profile</strong></div>
                     <div class="card-body">
+                        @php
+                            if (Session::has('error_messages')) {
+                                $error_messages = Session::get('error_messages');
+                            }
+                        @endphp
+                        @if (isset($error_messages))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center">
+                            <strong>Update failed.</strong> <br>
+                             @foreach ($error_messages as $error_message)
+                                 {{$error_message}} <br>
+                             @endforeach
+                        </div>
+                        @endif
                         <div class="col-sm-1"></div>
                                 <div class="form-group row">
                                     <label for="username" class="col-sm-3 col-form-label">Username <span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
-                                        <input type="string" name="username" value="{{ $userinfo->username }}" id="username" class="form-control @error('username') is-invalid @enderror" placeholder="Masukkan Username" required>
+                                        <input type="string" name="username" value="{{ $userinfo->username }}" id="username" class="form-control @error('username') is-invalid @enderror" placeholder="Masukkan username" required>
                                         @error('username')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -170,7 +183,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group row">
-                                    <label for="customFile" class="col-sm-3 col-form-label">Photo Profile <span class="badge badge-warning">Public</span></label>
+                                    <label for="customFile" class="col-sm-3 col-form-label">Profile Photo<span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" id="customFile">
                                         @error('gambar')

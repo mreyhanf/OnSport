@@ -16,7 +16,32 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('showHome');
+    }
+
+    public function showHome()
+    {
+        if (Auth::check()) {
+            // HomeController::activeCreatedEventOlahraga();
+            $user = Auth::user();
+            $eventscreated = DB::table('eo')->where('usernamehost', $user->username)->where('tanggal', '>=', Carbon::today())->orderBy('tanggal', 'asc')->orderBy('jam', 'asc')->get();
+            $jumlahpartisipancreated = [];
+            foreach ($eventscreated as $event) {
+                $partisipan = DB::table('partisipan')->where('idevent', $event->idevent)->count();
+                array_push($jumlahpartisipancreated, $partisipan);
+            }
+            $joinedEventDanJumlahPartisipan = HomeController::activeJoinedEventOlahraga();
+            $eventsjoined = $joinedEventDanJumlahPartisipan[0];
+            $jumlahpartisipanjoined = $joinedEventDanJumlahPartisipan[1];
+
+            $recEventDanJumlahPartisipan = HomeController:: recommendationEventOlahraga();
+            $eventsrec = $recEventDanJumlahPartisipan[0];
+            $jumlahpartisipanrec = $recEventDanJumlahPartisipan[1];
+
+            return view('home',['eventscreated' => $eventscreated,'jumlahpartisipancreated' => $jumlahpartisipancreated, 'eventsjoined' => $eventsjoined,'jumlahpartisipanjoined' => $jumlahpartisipanjoined, 'eventsrec' => $eventsrec,'jumlahpartisipanrec' => $jumlahpartisipanrec]);
+        } else {
+            return view('home_guest');
+        }
     }
 
      /**
@@ -25,8 +50,7 @@ class HomeController extends Controller
     public function activeCreatedEventOlahraga()
     {
         $user = Auth::user();
-        $eventscreated = DB::table('eo')->where('usernamehost', $user->username)->where('tanggal', '>=', 
-Carbon::today())->orderBy('tanggal', 'asc')->orderBy('jam', 'asc')->get();
+        $eventscreated = DB::table('eo')->where('usernamehost', $user->username)->where('tanggal', '>=', Carbon::today())->orderBy('tanggal', 'asc')->orderBy('jam', 'asc')->get();
         $jumlahpartisipancreated = [];
         foreach ($eventscreated as $event) {
             $partisipan = DB::table('partisipan')->where('idevent', $event->idevent)->count();
@@ -40,10 +64,7 @@ Carbon::today())->orderBy('tanggal', 'asc')->orderBy('jam', 'asc')->get();
         $eventsrec = $recEventDanJumlahPartisipan[0];
         $jumlahpartisipanrec = $recEventDanJumlahPartisipan[1];
 
-        return view('home',['eventscreated' => $eventscreated,'jumlahpartisipancreated' => 
-$jumlahpartisipancreated, 'eventsjoined' => $eventsjoined,'jumlahpartisipanjoined' => $jumlahpartisipanjoined, 
-'eventsrec' => $eventsrec,'jumlahpartisipanrec' => $jumlahpartisipanrec]);
-
+        return view('home',['eventscreated' => $eventscreated,'jumlahpartisipancreated' => $jumlahpartisipancreated, 'eventsjoined' => $eventsjoined,'jumlahpartisipanjoined' => $jumlahpartisipanjoined, 'eventsrec' => $eventsrec,'jumlahpartisipanrec' => $jumlahpartisipanrec]);
     }
 
     /**
@@ -59,7 +80,7 @@ $jumlahpartisipancreated, 'eventsjoined' => $eventsjoined,'jumlahpartisipanjoine
         $ideventpartisipan = DB::table('partisipan')->where('username', $user->username)->get();
         $eventpartisipan = [];
         foreach($ideventpartisipan as $ideventpar) {
-            $eventdata = DB::table('eo')->where('idevent', $ideventpar->idevent)->where('tanggal', '>=', 
+            $eventdata = DB::table('eo')->where('idevent', $ideventpar->idevent)->where('tanggal', '>=',
 Carbon::today())->first();
             if(!is_null($eventdata)) {
                 array_push($eventpartisipan, $eventdata);
@@ -91,8 +112,8 @@ Carbon::today())->first();
         foreach($preferensiolahraga as $prefor) {
             array_push($kategori, $prefor->kategori);
         }
-        $event_recommendation = DB::table('eo')->whereIn('kategori', $kategori)->where('kota', 
-$user->kota)->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', 
+        $event_recommendation = DB::table('eo')->whereIn('kategori', $kategori)->where('kota',
+$user->kota)->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>',
 $user->username)->take(9)->get();
         $jumlahpartisipan = [];
         foreach ($event_recommendation as $eventrec) { //currently pakai yang dari eo alternatif 2

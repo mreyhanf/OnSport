@@ -234,11 +234,8 @@
 
 <h4 style="margin-bottom: 30px">Join Requests: {{count($usercalonpartisipan)}}</h4>
 @if (!$ed->statuspenerimaan)
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="font-size: 1.3em">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="font-size: 1.3em; text-align: center">
         <strong>Kuota partisipan telah penuh!</strong> Anda tidak dapat menerima permintaan bergabung lagi. Anda dapat menghapus partisipan atau menunggu partisipan membatalkan partisipasinya.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
     </div>
 @endif
 

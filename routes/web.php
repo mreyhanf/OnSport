@@ -17,9 +17,14 @@ Route::get('/', function () {
 */
 
 Auth::routes();
-Route::get('/', 'HomeController@activeCreatedEventOlahraga');
 
-Route::get('/home', 'HomeController@activeCreatedEventOlahraga');
+// Show home
+Route::get('/', 'HomeController@showHome');
+Route::get('/home', 'HomeController@showHome');
+
+//Show Events by Category (Browse) route
+Route::get('/browse', 'BrowseController@showBrowse');
+Route::post('/browse/filter', 'BrowseController@filterBrowse');
 
 //Forget Reset Password Routes
 Route::get('/reset-password', 'ResetPasswordController@displayResetpasswordpage');
@@ -62,10 +67,6 @@ Route::post('/createevents/store','CreateEventsController@store');
 //Edit events route
 Route::get('/event/edit/{idevent}','EditEventController@editEvent');
 Route::post('/event/update/{idevent}','EditEventController@update');
-
-//Show Events by Category (Browse) route
-Route::get('/browse', 'BrowseController@browse');
-Route::post('/browse/filter', 'BrowseController@filter');
 
 //Notfications
 Route::get('/notifications', 'ShowNotifications@showNotifications');

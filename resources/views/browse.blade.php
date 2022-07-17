@@ -11,13 +11,14 @@
 @section('stylecolortext_profile', 'white')
 
 @section('content')
+<div class="container">
 <form action="/browse/filter" method="post">
-<div class="container">
+
     <div>
-    <a class="navbar-brand">Filter</a>
+    <span class="navbar-brand">Filter</span>
     </div>
-</div>
-<div class="container">
+
+
     <div class="row">
     <div class="col-sm-2">
     <div class="form-check form-check-inline">
@@ -58,16 +59,20 @@
     </div>
     </div>
     </div>
-</div>
+
     {{csrf_field()}}
-<div class="container">
+
     <div>
     <input type="submit" value="Terapkan" class="btn btn-primary" style="width: 100px">
     </div>
-</div>
+
 </form>
+</div>
+
 <div class="container">
-<hr>
+    <hr>
+</div>
+
 
 @php
     if (Session::has('events')) {
@@ -78,16 +83,13 @@
 
 <div class="container">
     <div class="alert alert-info alert-dismissible fade show" role="alert" style="text-align: center">
-        <strong>Hanya event yang aktif (belum sampai jadwal) dan berlokasi di kota Anda yang ditampilkan di halaman ini. Ubah kota di profile Anda untuk melihat event di kota lain.</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+            <strong>Hanya event yang aktif (belum sampai jadwal) yang ditampilkan di halaman ini.</strong>
     </div>
-    <div>
+
     @if (empty($events))
     <div style="padding: 15px;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translate(-50%,-50%);
@@ -95,6 +97,7 @@
         <span style="font-size: 20px; color: rgb(88, 88, 88)">No events yet</span>
     </div>
     @endif
+
     @if (!empty($events))
     @php
     $carddeckamount = ceil(count($events) / 3); // jumlah card-deck atau baris
@@ -138,10 +141,8 @@
     }
     @endphp
     @endif
-    </div>
-</div>
-</div>
 
+</div>
 
 <script>
     const collection_card_title = document.getElementsByClassName("card-title");

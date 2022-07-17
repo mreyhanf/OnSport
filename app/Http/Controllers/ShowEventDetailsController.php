@@ -16,13 +16,88 @@ class ShowEventDetailsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('showEventDetails');
+    }
+
+    public function showEventDetails($idevent) {
+        if (Auth::check()) {
+            $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
+            $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
+
+            $host_username = $eventdetails[0]->usernamehost;
+            $host = DB::table('users')->where('username', $host_username)->get(); //get host's info (username/name and profile picture) from users table
+
+            $partisipan = DB::table('partisipan')->where('idevent', $idevent)->get();
+            $userpartisipan = [];
+            foreach ($partisipan as $par) {
+                $infopartisipan = DB::table('users')->where('username', $par->username)->first(); //get each partisipan's info (username/name and profile picture) from users table
+                array_push($userpartisipan, $infopartisipan);
+            }
+
+            $user = Auth::user();
+
+            // Return view berdasarkan role
+
+            // cek apakah calon partisipan, return view eventdetails_calonpartisipan apabila ya
+            // cara 1 cek apakah calon partisipan
+            $calonpartisipanloggedin = DB::table('calonpartisipan')->where([
+                ['idevent', '=', $idevent],
+                ['username', '=', $user->username], // username of logged in user (retrieved from session)
+            ])->get();
+            if ($calonpartisipanloggedin->isNotEmpty()) {
+                return view('eventdetails_calonpartisipan',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan]);
+            }
+
+
+            // cek apakah partisipan, return view eventdetails_partisipan apabila ya
+            // cara 1 cek apakah partisipan
+            $partisipanloggedin = DB::table('partisipan')->where([
+                ['idevent', '=', $idevent],
+                ['username', '=', $user->username], // username of logged in user (retrieved from session)
+            ])->get();
+            if ($partisipanloggedin->isNotEmpty()) {
+                return view('eventdetails_partisipan',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan]);
+            }
+
+
+            // cek apakah host, return view eventdetails_host apabila ya
+            if ($host_username == $user->username) { // $eventdetails->usernamehost == username of logged in user (retrieved from session)
+                $calonpartisipan = DB::table('calonpartisipan')->where('idevent', $idevent)->get();
+                $usercalonpartisipan = [];
+                foreach ($calonpartisipan as $cp) {
+                    $infocalonpartisipan = DB::table('users')->where('username', $cp->username)->first(); //get each calon partisipan's info (username/name and profile picture) from users table
+                    array_push($usercalonpartisipan, $infocalonpartisipan);
+                }
+
+                return view('eventdetails_host',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan,'usercalonpartisipan' => $usercalonpartisipan]);
+            }
+
+
+            // dijalankan apabila logged in user bukan host, partisipan, atau pun calon partisipan. return view eventdetails_default
+            return view('eventdetails_default',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan]);
+
+        } else {
+            $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
+            $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
+
+            $host_username = $eventdetails[0]->usernamehost;
+            $host = DB::table('users')->where('username', $host_username)->get(); //get host's info (username/name and profile picture) from users table
+
+            $partisipan = DB::table('partisipan')->where('idevent', $idevent)->get();
+            $userpartisipan = [];
+            foreach ($partisipan as $par) {
+                $infopartisipan = DB::table('users')->where('username', $par->username)->first(); //get each partisipan's info (username/name and profile picture) from users table
+                array_push($userpartisipan, $infopartisipan);
+            }
+            return view('eventdetails_default',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan]);
+
+        }
     }
 
     /**
      * Show event details view
      */
-    public function showEventDetails($idevent) {
+    public function showEventDetailsLoggedIn($idevent) {
         $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
         $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
 
