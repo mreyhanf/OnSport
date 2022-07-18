@@ -6,8 +6,11 @@
 <div class="container">
 <h3>Event Details</h3>
 
-@foreach ($eventdetails as $ed)
+<a class="btn btn-outline-dark mt-1 mb-2" href=" {{ url()->previous() }} ">
+    <span class="oi oi-arrow-left" title="arrow left" aria-hidden="true" style="margin-right: 5px"></span> Back
+</a>
 
+@foreach ($eventdetails as $ed)
 <div class="form-group row">
     <div class="col-sm-12 col-md-8">
         <span style="font-size: 1.875em; font-weight: bolder; word-wrap: break-word; white-space: normal">{{ $ed->judulevent }}</span>

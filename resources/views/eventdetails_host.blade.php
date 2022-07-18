@@ -6,8 +6,23 @@
 <div class="container">
 <h3>Event Details</h3>
 
-@foreach ($eventdetails as $ed)
+@php
+    $link_back1 = 'https://onsport.web.id/create-event';
+    $link_back2 = 'https://onsport.web.id/create-event/store';
+    $link_back3 = 'http://onsport.web.id/create-event';
+    $link_back4 = 'http://onsport.web.id/create-event/store';
+    $link_back5 = 'https://onsport.web.id/event/edit/' . $eventdetails[0]->idevent;
+    $link_back6 = 'http://onsport.web.id/event/edit/' . $eventdetails[0]->idevent;
+    $link_back7 = 'http://127.0.0.1:8000/create-event';
+    $link_back8 = 'http://127.0.0.1:8000/create-event/store';
+    $link_back9 = 'http://127.0.0.1:8000/event/edit/' . $eventdetails[0]->idevent;
+@endphp
 
+<a class="btn btn-outline-dark mt-1 mb-2" href=" @if (url()->previous() == $link_back1 || url()->previous() == $link_back2 || url()->previous() == $link_back3 || url()->previous() == $link_back4 || url()->previous() == $link_back5 || url()->previous() == $link_back6 || url()->previous() == $link_back7 || url()->previous() == $link_back8 || url()->previous() == $link_back9) {{ '/home' }} @else {{ url()->previous() }} @endif ">
+    <span class="oi oi-arrow-left" title="arrow left" aria-hidden="true" style="margin-right: 5px"></span> Back
+</a>
+
+@foreach ($eventdetails as $ed)
 <div class="form-group row">
     <div class="col-sm-12 col-md-8">
         <span style="font-size: 1.875em; font-weight: bolder; word-wrap: break-word; white-space: normal">{{ $ed->judulevent }}</span>
@@ -234,7 +249,7 @@
 
 <h4 style="margin-bottom: 30px">Join Requests: {{count($usercalonpartisipan)}}</h4>
 @if (!$ed->statuspenerimaan)
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="font-size: 1.3em; text-align: center">
+    <div class="alert alert-warning" role="alert" style="font-size: 1.3em; text-align: center">
         <strong>Kuota partisipan telah penuh!</strong> Anda tidak dapat menerima permintaan bergabung lagi. Anda dapat menghapus partisipan atau menunggu partisipan membatalkan partisipasinya.
     </div>
 @endif

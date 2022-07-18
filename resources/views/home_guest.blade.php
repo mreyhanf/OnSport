@@ -14,8 +14,8 @@
 
 <div class="container">
 
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center; background:rgb(255, 238, 183)">
-        <strong>You need to log in first to see your active events and get recommendations. Meanwhile, you can go to <span style="background: rgb(255, 174, 0); color: black">Browse</span> to explore all active events.</strong>
+    <div class="alert alert-warning" role="alert" style="text-align: center; background:rgb(255, 238, 183)">
+        <strong>You need to log in first to see your active events and get recommendations. In the mean time, you can go to <span style="background: rgb(255, 174, 0); color: black">Browse</span> to explore all active events.</strong>
     </div>
 
     <div class="row mb-4">

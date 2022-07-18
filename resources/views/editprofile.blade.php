@@ -25,7 +25,7 @@
                             }
                         @endphp
                         @if (isset($error_messages))
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center">
+                        <div class="alert alert-warning" role="alert" style="text-align: center">
                             <strong>Update failed.</strong> <br>
                              @foreach ($error_messages as $error_message)
                                  {{$error_message}} <br>
@@ -183,7 +183,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group row">
-                                    <label for="customFile" class="col-sm-3 col-form-label">Profile Photo<span class="badge badge-warning">Public</span></label>
+                                    <label for="customFile" class="col-sm-3 col-form-label">Foto Profil<span class="badge badge-warning">Public</span></label>
                                     <div class="col-sm-9">
                                         <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" id="customFile">
                                         @error('gambar')

@@ -22,8 +22,8 @@
         <div class="navbar">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active px-2 rounded-pill" style="background-color: rgb(170, 170, 170); text-align: center"><a class="nav-link" href="#" style="color: black"><strong>Created</strong></a></li>
-                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/myevents/joined" style="text-align: center">Joined</a></li>
-                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/myevents/requested" style="text-align: center">Requested</a></li>
+                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/my-events/joined" style="text-align: center">Joined</a></li>
+                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/my-events/requested" style="text-align: center">Requested</a></li>
             </ul>
         </div>
     </div>

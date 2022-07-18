@@ -21,8 +21,8 @@
     <div class="collapse navbar-collapse" id="navbarMyEvents">
         <div class="navbar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/myevents/created" style="text-align: center">Created</a></li>
-                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/myevents/joined" style="text-align: center">Joined</a></li>
+                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/my-events/created" style="text-align: center">Created</a></li>
+                <li class="nav-item px-2 rounded-pill"><a class="nav-link" href="/my-events/joined" style="text-align: center">Joined</a></li>
                 <li class="nav-item active px-2 rounded-pill" style="background-color: rgb(170, 170, 170); text-align: center"><a class="nav-link" href="#"><strong>Requested</strong></a></li>
             </ul>
         </div>

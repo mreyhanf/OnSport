@@ -30,10 +30,10 @@ Route::post('/browse/filter', 'BrowseController@filterBrowse');
 Route::get('/reset-password', 'ResetPasswordController@displayResetpasswordpage');
 Route::post('/reset-password', 'ResetPasswordController@ResetPassword');
 //My Events routes
-Route::get('/myevents', 'ShowCreatedEvents@displayCreatedEventOlahraga');
-Route::get('/myevents/created', 'ShowCreatedEvents@displayCreatedEventOlahraga');
-Route::get('/myevents/joined', 'ShowJoinedEvents@displayJoinedEventOlahraga');
-Route::get('/myevents/requested', 'ShowRequestedEvents@displayRequestedEventOlahraga');
+Route::get('/my-events', 'ShowCreatedEvents@displayCreatedEventOlahraga');
+Route::get('/my-events/created', 'ShowCreatedEvents@displayCreatedEventOlahraga');
+Route::get('/my-events/joined', 'ShowJoinedEvents@displayJoinedEventOlahraga');
+Route::get('/my-events/requested', 'ShowRequestedEvents@displayRequestedEventOlahraga');
 
 //Event details routes
 Route::get('/event/details/{idevent}', 'ShowEventDetailsController@showEventDetails');
@@ -61,8 +61,8 @@ Route::post('/event/canceljoinreq', 'CancelJoinRequestToEventsController@cancelJ
 Route::post('/event/cancelparticipation', 'CancelParticipationFromAnEventController@cancelParticipation');
 
 //Create events routes
-Route::get('/createevents','CreateEventsController@showCreateEvents')->name('createevents');
-Route::post('/createevents/store','CreateEventsController@store');
+Route::get('/create-event','CreateEventsController@showCreateEvents');
+Route::post('/create-event/store','CreateEventsController@store');
 
 //Edit events route
 Route::get('/event/edit/{idevent}','EditEventController@editEvent');

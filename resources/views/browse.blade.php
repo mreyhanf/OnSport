@@ -82,7 +82,7 @@
 @endphp
 
 <div class="container">
-    <div class="alert alert-info alert-dismissible fade show" role="alert" style="text-align: center">
+    <div class="alert alert-info" role="alert" style="text-align: center">
             <strong>Hanya event yang aktif (belum sampai jadwal) yang ditampilkan di halaman ini.</strong>
     </div>
 

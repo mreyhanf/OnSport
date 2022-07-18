@@ -3,7 +3,7 @@
 @section('title', 'Create Events • OnSport')
 
 @section('content')
-<form action="/createevents/store" method="post" enctype="multipart/form-data">
+<form action="/create-event/store" method="post" enctype="multipart/form-data">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
