@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Catatan <span class="badge badge-info">Opsional</span></label>
-                                    <textarea name="catatan" class="form-control" value="{{ $ed->catatan }}" placeholder="Masukkan catatan atau informasi tambahan (opsional)" cols="30" rows="8"></textarea>
+                                    <textarea name="catatan" class="form-control" value="{{ $ed->catatan }}" placeholder="Masukkan catatan atau informasi tambahan (opsional)" cols="30" rows="8">{{ $ed->catatan }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="customFile" class="label-control">Gambar</label>
