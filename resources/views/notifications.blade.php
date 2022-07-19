@@ -13,8 +13,26 @@
 @section('content')
 
 <div class="container">
+    <div class="row ml-1 mb-4">
+        <div class="col-xs-5 offset-md-1">
 
-    @if ($notifications->isEmpty()) <!-- ($events->isEmpty()) -->
+        </div>
+        <form action="/notifications/clear" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="usernamepn" value="{{ Auth::user()->username }}">
+            <button type="submit" class="btn btn-outline-danger" id="clear-notifications-button">
+                <span class="oi oi-trash" title="trash" aria-hidden="true" style="margin-right: 5px"></span> Clear notifications
+            </button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        $("#clear-notifications-button").on('click', function confirmNotificationsDeletion() {
+            return confirm('Anda akan menghapus seluruh notifikasi Anda. Apakah Anda yakin?')
+        })
+    </script>
+
+    @if ($notifications->isEmpty()) <!-- ($notifications->isEmpty()) -->
     <div style="padding: 15px;
     position: absolute;
     top: 50%;

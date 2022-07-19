@@ -3,24 +3,30 @@
 @section('title', 'Event Details • OnSport')
 
 @section('content')
-<div class="container">
-<h3>Event Details</h3>
 
 @php
     $link_back1 = 'https://onsport.web.id/create-event';
-    $link_back2 = 'https://onsport.web.id/create-event/store';
-    $link_back3 = 'http://onsport.web.id/create-event';
-    $link_back4 = 'http://onsport.web.id/create-event/store';
-    $link_back5 = 'https://onsport.web.id/event/edit/' . $eventdetails[0]->idevent;
-    $link_back6 = 'http://onsport.web.id/event/edit/' . $eventdetails[0]->idevent;
-    $link_back7 = 'http://127.0.0.1:8000/create-event';
-    $link_back8 = 'http://127.0.0.1:8000/create-event/store';
-    $link_back9 = 'http://127.0.0.1:8000/event/edit/' . $eventdetails[0]->idevent;
+    $link_back2 = 'https://onsport.web.id/event/details/' . $eventdetails[0]->idevent;
+    $link_back3 = 'https://onsport.web.id/event/edit/' . $eventdetails[0]->idevent;
+    $link_back4 = 'https://onsport.web.id/create-event/store';
+    $link_back5 = 'http://onsport.web.id/create-event';
+    $link_back6 = 'http://onsport.web.id/event/details/' . $eventdetails[0]->idevent;
+    $link_back7 = 'http://onsport.web.id/event/edit/' . $eventdetails[0]->idevent;
+    $link_back8 = 'http://onsport.web.id/create-event/store';
+    $link_back9 = 'http://127.0.0.1:8000/create-event';
+    $link_back10 = 'http://127.0.0.1:8000/event/details/' . $eventdetails[0]->idevent;
+    $link_back11 = 'http://127.0.0.1:8000/event/edit/' . $eventdetails[0]->idevent;
+    $link_back12 = 'http://127.0.0.1:8000/create-event/store';
+
+    $link_back_array = [$link_back1, $link_back2, $link_back3, $link_back4, $link_back5, $link_back6, $link_back7, $link_back8, $link_back9, $link_back10, $link_back11, $link_back12];
 @endphp
 
-<a class="btn btn-outline-dark mt-1 mb-2" href=" @if (url()->previous() == $link_back1 || url()->previous() == $link_back2 || url()->previous() == $link_back3 || url()->previous() == $link_back4 || url()->previous() == $link_back5 || url()->previous() == $link_back6 || url()->previous() == $link_back7 || url()->previous() == $link_back8 || url()->previous() == $link_back9) {{ '/home' }} @else {{ url()->previous() }} @endif ">
-    <span class="oi oi-arrow-left" title="arrow left" aria-hidden="true" style="margin-right: 5px"></span> Back
-</a>
+<div class="container">
+    <h3>Event Details</h3>
+
+    <a class="btn btn-outline-dark mt-1 mb-2" href=" @if (in_array(url()->previous(), $link_back_array)) {{ '/home' }} @else {{ url()->previous() }} @endif ">
+        <span class="oi oi-arrow-left" title="arrow left" aria-hidden="true" style="margin-right: 5px"></span> Back
+    </a>
 
 @foreach ($eventdetails as $ed)
 <div class="form-group row">
@@ -44,10 +50,6 @@
                         Delete event
                     </button>
                 </form>
-                <!-- <a href="/event/delete/{{$ed->idevent}}" class="btn btn-danger rounded-pill" id="deleteevent" style="width: 109px">
-                    Delete event
-                </a>
-                -->
             </div>
         </div>
     </div>

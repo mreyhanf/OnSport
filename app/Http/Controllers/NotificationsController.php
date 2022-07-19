@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class ShowNotifications extends Controller
+class NotificationsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,5 +23,11 @@ class ShowNotifications extends Controller
         $notifications = DB::table('notifikasi')->where('usernamepn', $user->username)->orderBy('idnotifikasi', 'desc')->get();
 
         return view('notifications', ['notifications' => $notifications]);
+    }
+
+    public function deleteAllNotifications(Request $request)
+    {
+        DB::table('notifikasi')->where('usernamepn', $request->usernamepn)->delete();
+        return redirect('/notifications');
     }
 }

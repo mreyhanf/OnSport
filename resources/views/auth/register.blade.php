@@ -163,7 +163,7 @@
                     </form>
                     <div class="form-group row mb-2 mt-4">
                         <div class="col-md-8 offset-md-4">
-                            <a href="/home">Or continue without logging in -></a>
+                            <a href="/home" style="font-weight: 600">Or continue without logging in &rarr;</a>
                         </div>
                     </div>
                 </div>

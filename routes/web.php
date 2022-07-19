@@ -68,8 +68,11 @@ Route::post('/create-event/store','CreateEventsController@store');
 Route::get('/event/edit/{idevent}','EditEventController@editEvent');
 Route::post('/event/update/{idevent}','EditEventController@update');
 
-//Notfications
-Route::get('/notifications', 'ShowNotifications@showNotifications');
+//Show notfications
+Route::get('/notifications', 'NotificationsController@showNotifications');
+
+// Clear notifications
+Route::post('/notifications/clear', 'NotificationsController@deleteAllNotifications');
 
 //Edit Profile
 Route::get('/profile/edit', 'EditProfileController@edit');
