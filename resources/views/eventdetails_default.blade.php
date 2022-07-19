@@ -3,10 +3,19 @@
 @section('title', 'Event Details • OnSport')
 
 @section('content')
+
+@php
+    $link_back1 = 'https://onsport.web.id/event/details/' . $eventdetails[0]->idevent;
+    $link_back2 = 'http://onsport.web.id/event/details/' . $eventdetails[0]->idevent;
+    $link_back3 = 'http://127.0.0.1:8000/event/details/' . $eventdetails[0]->idevent;
+
+    $link_back_array = [$link_back1, $link_back2, $link_back3];
+@endphp
+
 <div class="container">
 <h3>Event Details</h3>
 
-<a class="btn btn-outline-dark mt-1 mb-2" href=" {{ url()->previous() }} ">
+<a class="btn btn-outline-dark mt-1 mb-2" href=" @if (in_array(url()->previous(), $link_back_array)) {{ '/home' }} @else {{ url()->previous() }} @endif ">
     <span class="oi oi-arrow-left" title="arrow left" aria-hidden="true" style="margin-right: 5px"></span> Back
 </a>
 
