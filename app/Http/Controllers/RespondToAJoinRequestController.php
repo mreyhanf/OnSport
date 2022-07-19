@@ -59,7 +59,7 @@ class RespondToAJoinRequestController extends Controller
      * Create record in partisipan table using username and idevent
      * By Reyhan
      */
-    public function checkStatusPenerimaan($idevent)
+    public static function checkStatusPenerimaan($idevent)
     {
         $event = DB::table('eo')->where('idevent', $idevent)->first();
         $kuota = $event->kuotapartisipan;

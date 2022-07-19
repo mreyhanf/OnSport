@@ -24,6 +24,8 @@ class ShowEventDetailsController extends Controller
             $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
             $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
 
+            $statuspenerimaan = RespondToAJoinRequestController::checkStatusPenerimaan($idevent);
+
             $host_username = $eventdetails[0]->usernamehost;
             $host = DB::table('users')->where('username', $host_username)->get(); //get host's info (username/name and profile picture) from users table
 
@@ -69,7 +71,7 @@ class ShowEventDetailsController extends Controller
                     array_push($usercalonpartisipan, $infocalonpartisipan);
                 }
 
-                return view('eventdetails_host',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan,'usercalonpartisipan' => $usercalonpartisipan]);
+                return view('eventdetails_host',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan,'usercalonpartisipan' => $usercalonpartisipan,'statuspenerimaan' => $statuspenerimaan]);
             }
 
 

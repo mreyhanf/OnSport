@@ -93,101 +93,101 @@
 
 <h4 style="margin-bottom: 30px">Details</h4>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="kategori" style="font-size: 1.3em"><strong >Kategori</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="kategori" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="kategori" style="font-size: 1.3em">
         {{ $ed->kategori }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="tanggal"><strong style="font-size: 1.3em">Tanggal</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="tanggal" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="tanggal" style="font-size: 1.3em">
         {{ date('d F Y', strtotime($ed->tanggal)) }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="jam"><strong style="font-size: 1.3em">Jam</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="jam" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="jam" style="font-size: 1.3em">
         {{ date('H:i T', strtotime($ed->jam)) }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="lokasi"><strong style="font-size: 1.3em">Lokasi</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="lokasi" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="lokasi" style="font-size: 1.3em">
         {{ $ed->lokasi }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="kota"><strong style="font-size: 1.3em">Kota</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="kota" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="kota" style="font-size: 1.3em">
         {{ $ed->kota }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="range_usia"><strong style="font-size: 1.3em">Range usia</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="range_usia" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="range_usia" style="font-size: 1.3em">
         {{ $ed->rangeub }} - {{ $ed->rangeua }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="level"><strong style="font-size: 1.3em">Level</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="level" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="level" style="font-size: 1.3em">
         {{ $ed->levelkeahlian }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="kuota"><strong style="font-size: 1.3em">Kuota partisipan</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="kuota" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="kuota" style="font-size: 1.3em">
         {{ $ed->kuotapartisipan }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="catatan"><strong style="font-size: 1.3em">Catatan</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="catatan" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="catatan" style="font-size: 1.3em">
         {{ $ed->catatan }}
     </div>
 </div>
@@ -250,8 +250,8 @@
 <!-- Permintaan Bergabung / Calon Partisipan -->
 
 <h4 style="margin-bottom: 30px">Join Requests: {{count($usercalonpartisipan)}}</h4>
-@if (!$ed->statuspenerimaan)
-    <div class="alert alert-warning" role="alert" style="font-size: 1.3em; text-align: center">
+@if (!$statuspenerimaan)
+    <div class="alert alert-warning" role="alert" style="font-size: 1.3em; text-align: center; background:rgb(255, 250, 185)">
         <strong>Kuota partisipan telah penuh!</strong> Anda tidak dapat menerima permintaan bergabung lagi. Anda dapat menghapus partisipan atau menunggu partisipan membatalkan partisipasinya.
     </div>
 @endif
@@ -292,7 +292,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5 pt-1">
-                @if ($ed->statuspenerimaan)
+                @if ($statuspenerimaan)
                     <form action="/event/accjoinreq" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="idevent" value="{{ $ed->idevent }}">
