@@ -48,7 +48,7 @@ class EditProfileController extends Controller
     {
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:20', 'unique:users,username'],
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'tanggallahir'=> ['required'],
             'gender'=> ['required'],

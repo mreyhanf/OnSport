@@ -99,7 +99,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="kategori" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="kategori" style="font-size: 1.3em; word-wrap: break-word">
         {{ $ed->kategori }}
     </div>
 </div>
@@ -110,7 +110,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="tanggal" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="tanggal" style="font-size: 1.3em; word-wrap: break-word">
         {{ date('d F Y', strtotime($ed->tanggal)) }}
     </div>
 </div>
@@ -121,7 +121,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="jam" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="jam" style="font-size: 1.3em; word-wrap: break-word">
         {{ date('H:i T', strtotime($ed->jam)) }}
     </div>
 </div>
@@ -132,7 +132,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="lokasi" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="lokasi" style="font-size: 1.3em; word-wrap: break-word">
         {{ $ed->lokasi }}
     </div>
 </div>
@@ -143,7 +143,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="kota" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="kota" style="font-size: 1.3em; word-wrap: break-word">
         {{ $ed->kota }}
     </div>
 </div>
@@ -154,7 +154,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="range_usia" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="range_usia" style="font-size: 1.3em; word-wrap: break-word">
         {{ $ed->rangeub }} - {{ $ed->rangeua }}
     </div>
 </div>
@@ -165,7 +165,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="level" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="level" style="font-size: 1.3em; word-wrap: break-word">
         {{ $ed->levelkeahlian }}
     </div>
 </div>
@@ -176,7 +176,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="kuota" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="kuota" style="font-size: 1.3em; word-wrap: break-word">
         {{ $ed->kuotapartisipan }}
     </div>
 </div>
@@ -187,7 +187,7 @@
     <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-7 col-sm-9" id="catatan" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="catatan" style="font-size: 1.3em; word-wrap: break-word">
         {{ $ed->catatan }}
     </div>
 </div>

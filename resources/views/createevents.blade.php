@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Lokasi <span class="badge badge-info">Informasi lokasi yang detail dapat memudahkan partisipan mengikuti event</span></label>
-                                    <input type="string" name="lokasi" id="lokasi" class="form-control" placeholder="Masukkan lokasi" required>
+                                    <input type="string" name="lokasi" id="lokasi" class="form-control" placeholder="Masukkan lokasi" required maxlength="100">
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Kota</label>
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label-control">Catatan <span class="badge badge-info">Opsional</span></label>
-                                    <textarea name="catatan" class="form-control" placeholder="Masukkan catatan atau informasi tambahan (opsional)" cols="30" rows="8"></textarea>
+                                    <textarea name="catatan" class="form-control" placeholder="Masukkan catatan atau informasi tambahan (opsional)" cols="30" rows="8" maxlength="200"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="customFile" class="label-control">Gambar</label>
