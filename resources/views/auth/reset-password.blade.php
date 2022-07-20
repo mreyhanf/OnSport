@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Reset Password •')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -11,7 +13,7 @@
                     <form method="POST" action="/reset-password">
                         @csrf
 
-                     
+
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

@@ -44,48 +44,48 @@ $gambarprofile = $userinfo->gambar == "" ? "users_image/userprofile_placeholder3
 <hr>
 
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="name" style="font-size: 1.3em"><strong >Nama</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="name" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="name" style="font-size: 1.3em; word-wrap: break-word">
         {{ $userinfo->name }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="email"><strong style="font-size: 1.3em">Email</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="email" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="email" style="font-size: 1.3em; word-wrap: break-word">
         {{ $userinfo->email }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="kota"><strong style="font-size: 1.3em">Kota</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="kota" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="kota" style="font-size: 1.3em; word-wrap: break-word">
         {{ $userinfo->kota }}
     </div>
 </div>
 
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="kategori"><strong style="font-size: 1.3em">Preferensi Olahraga</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="kategori" style="font-size: 1.3em">
-        <ul>
+    <div class="col-7 col-sm-9" id="kategori" style="font-size: 1.3em; word-wrap: break-word">
+        <ul style="padding-inline-start: 20px">
             @foreach ($userpreferensiolahraga as $po)
             <li>{{ $po->kategori }} </li>
             @endforeach
@@ -95,35 +95,35 @@ $gambarprofile = $userinfo->gambar == "" ? "users_image/userprofile_placeholder3
 
 
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="gender"><strong style="font-size: 1.3em">Gender</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="gender" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="gender" style="font-size: 1.3em; word-wrap: break-word">
         {{ $userinfo->gender }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="tanggallahir"><strong style="font-size: 1.3em">Tanggal Lahir</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="tanggallahir" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="tanggallahir" style="font-size: 1.3em; word-wrap: break-word">
         {{ date('d F Y', strtotime($userinfo->tanggallahir)) }}
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-sm-2">
+    <div class="col-4 col-sm-2">
         <label for="akunmedsos"><strong style="font-size: 1.3em">Media Sosial</strong></label>
     </div>
-    <div class="col-sm-1" style="max-width: 30px">
+    <div class="col-1 col-sm-1" style="max-width: 30px">
         :
     </div>
-    <div class="col-sm-9" id="akunmedsos" style="font-size: 1.3em">
+    <div class="col-7 col-sm-9" id="akunmedsos" style="font-size: 1.3em; word-wrap: break-word">
         {{ $userinfo->akunmedsos}}
     </div>
 </div>

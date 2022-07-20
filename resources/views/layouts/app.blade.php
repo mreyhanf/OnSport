@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>OnSport</title>
+    <title>@yield('title') OnSport</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -81,9 +81,23 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="min-height: 786px">
             @yield('content')
         </main>
+
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+              <div class="col-6 col-md-4 d-flex align-items-center">
+                <span class="text-muted">&copy; 2022 OnSport</span>
+              </div>
+
+              <div class="nav col-6 col-md-4 justify-content-end list-unstyled d-flex">
+                <a class="navbar-brand">
+                    OnSport
+                </a>
+              </div>
+            </footer>
+          </div>
     </div>
 </body>
 </html>
