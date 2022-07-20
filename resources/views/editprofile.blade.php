@@ -16,6 +16,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a class="btn btn-outline-dark mt-1" href=" {{ '/profile' }} " style="margin-bottom: 15px">
+                <span class="oi oi-arrow-left" title="arrow left" aria-hidden="true" style="margin-right: 5px"></span> Back
+            </a>
             <div class="card">
                 <div class="card-header"><strong>Edit Profile</strong></div>
                     <div class="card-body">
@@ -25,7 +28,7 @@
                             }
                         @endphp
                         @if (isset($error_messages))
-                        <div class="alert alert-warning" role="alert" style="text-align: center">
+                        <div class="alert alert-danger" role="alert" style="text-align: center">
                             <strong>Update failed.</strong> <br>
                              @foreach ($error_messages as $error_message)
                                  {{$error_message}} <br>

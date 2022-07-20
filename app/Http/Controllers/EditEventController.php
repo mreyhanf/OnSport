@@ -65,7 +65,7 @@ class EditEventController extends Controller
             $file->move($tujuan_upload,$file->getClientOriginalName());
         }
 
-        EditEventController::updateJudulNotifikasi($request->idevent);
+        EditEventController::updateJudulNotifikasi($request->idevent, $request->judulevent);
 
         $partisipan = DB::table('partisipan')->where('idevent', $request->idevent)->get();
         $calonpartisipan = DB::table('calonpartisipan')->where('idevent', $request->idevent)->get();
@@ -79,9 +79,8 @@ class EditEventController extends Controller
         return redirect('/event/details/' . $request->idevent);
     }
 
-    public function updateJudulNotifikasi($idevent)
+    public function updateJudulNotifikasi($idevent, $judulevent)
     {
-        $judulevent = DB::table('eo')->where('idevent', $idevent)->first()->judulevent;
         DB::table('notifikasi')->where('idevent', $idevent)->update([
             'judulevent' => $judulevent
         ]);

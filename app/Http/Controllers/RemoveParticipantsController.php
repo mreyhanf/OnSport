@@ -37,7 +37,7 @@ class RemoveParticipantsController extends Controller
         RemoveParticipantsController::setStatusPenerimaan($request->idevent);
         }
 
-        return redirect()->back();
+        return redirect('/event/details/' . $request->idevent);
     }
 
     /**

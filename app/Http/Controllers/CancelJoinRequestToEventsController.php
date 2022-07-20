@@ -29,7 +29,7 @@ class CancelJoinRequestToEventsController extends Controller
         CancelJoinRequestToEventsController::deleteCalonPartisipan($request->idevent, $user->username);
         }
 
-        return redirect()->back();
+        return redirect('/event/details/' . $request->idevent);
     }
 
     /**

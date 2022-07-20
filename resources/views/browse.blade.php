@@ -15,7 +15,7 @@
 <form action="/browse/filter" method="post">
 
     <div>
-    <span class="navbar-brand">Filter</span>
+    <h3 style="font-weight: bold">Filter</h3>
     </div>
 
 
@@ -62,7 +62,7 @@
 
     {{csrf_field()}}
 
-    <div>
+    <div class="mt-1">
     <input type="submit" value="Terapkan" class="btn btn-primary" style="width: 100px">
     </div>
 

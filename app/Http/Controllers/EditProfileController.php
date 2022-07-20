@@ -78,7 +78,7 @@ class EditProfileController extends Controller
         }
 
         if (!empty($error_array)) {
-            return redirect()->back()->with(['error_messages' => $error_array]);
+            return redirect('/profile/edit')->with(['error_messages' => $error_array]);
         }
 
         // menyimpan data file gambar yang diupload ke variabel $file

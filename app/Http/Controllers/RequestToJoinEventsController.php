@@ -34,7 +34,7 @@ class RequestToJoinEventsController extends Controller
         RequestToJoinEventsController::createJoinEventNotification($request->idevent, $usernamepn, $judulevent, $user->username);
         }
 
-        return redirect()->back();
+        return redirect('/event/details/' . $request->idevent);
     }
 
     /**

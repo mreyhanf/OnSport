@@ -25,6 +25,7 @@ Route::get('/home', 'HomeController@showHome');
 //Show Events by Category (Browse) route
 Route::get('/browse', 'BrowseController@showBrowse');
 Route::post('/browse/filter', 'BrowseController@filterBrowse');
+Route::get('/browse/filter', 'BrowseController@showBrowse');
 
 //Forget Reset Password Routes
 Route::get('/reset-password', 'ResetPasswordController@displayResetpasswordpage');

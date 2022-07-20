@@ -21,7 +21,7 @@
             {{ csrf_field() }}
             <input type="hidden" name="usernamepn" value="{{ Auth::user()->username }}">
             <button type="submit" class="btn btn-outline-danger" id="clear-notifications-button">
-                <span class="oi oi-trash" title="trash" aria-hidden="true" style="margin-right: 5px"></span> Clear notifications
+                <span class="oi oi-trash" title="trash" aria-hidden="true" style="margin-right: 5px"></span> <span>Clear notifications</span>
             </button>
         </form>
     </div>

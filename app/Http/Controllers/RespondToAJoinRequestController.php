@@ -40,17 +40,17 @@ class RespondToAJoinRequestController extends Controller
 
             RespondToAJoinRequestController::setStatusPenerimaan($request->idevent);
 
-            return redirect()->back();
+            return redirect('/event/details/' . $request->idevent);
 
         } elseif (DB::table('partisipan')->where('idevent', $request->idevent)->where('username', $request->username)->exists()) {
             $erroraccept = "Gagal menerima permintaan bergabung; user telah berada dalam daftar partisipan untuk event ini.";
-            return redirect()->back()->with(['erroraccept' => $erroraccept]);
+            return redirect('/event/details/' . $request->idevent)->with(['erroraccept' => $erroraccept]);
         } elseif (!$statuspenerimaan) {
             $erroraccept = "Gagal menerima permintaan bergabung; kuota partisipan penuh.";
-            return redirect()->back()->with(['erroraccept' => $erroraccept]);
+            return redirect('/event/details/' . $request->idevent)->with(['erroraccept' => $erroraccept]);
         } else {
             $erroraccept = "Gagal menerima permintaan bergabung.";
-            return redirect()->back()->with(['erroraccept' => $erroraccept]);
+            return redirect('/event/details/' . $request->idevent)->with(['erroraccept' => $erroraccept]);
         }
 
     }
@@ -148,7 +148,7 @@ class RespondToAJoinRequestController extends Controller
             RespondToAJoinRequestController::createNotifikasiJoinRequestDeclined($request->idevent, $request->username, $judulevent, $usernamepg);
 
         }
-        return redirect()->back();
+        return redirect('/event/details/' . $request->idevent);
     }
 
 

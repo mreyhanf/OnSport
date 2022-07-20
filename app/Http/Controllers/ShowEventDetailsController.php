@@ -22,9 +22,11 @@ class ShowEventDetailsController extends Controller
     public function showEventDetails($idevent) {
         if (Auth::check()) {
             $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
+            if (($eventdetails->isEmpty())) {
+                $error_event_details = "Oops... Couldn't find that event";
+                return view('eventdetails_default', ['error_event_details' => $error_event_details]);
+            }
             $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
-
-            $statuspenerimaan = RespondToAJoinRequestController::checkStatusPenerimaan($idevent);
 
             $host_username = $eventdetails[0]->usernamehost;
             $host = DB::table('users')->where('username', $host_username)->get(); //get host's info (username/name and profile picture) from users table
@@ -70,6 +72,7 @@ class ShowEventDetailsController extends Controller
                     $infocalonpartisipan = DB::table('users')->where('username', $cp->username)->first(); //get each calon partisipan's info (username/name and profile picture) from users table
                     array_push($usercalonpartisipan, $infocalonpartisipan);
                 }
+                $statuspenerimaan = RespondToAJoinRequestController::checkStatusPenerimaan($idevent);
 
                 return view('eventdetails_host',['eventdetails' => $eventdetails,'jumlahpartisipan' => $jumlahpartisipan,'host' => $host,'userpartisipan' => $userpartisipan,'usercalonpartisipan' => $usercalonpartisipan,'statuspenerimaan' => $statuspenerimaan]);
             }
@@ -80,6 +83,10 @@ class ShowEventDetailsController extends Controller
 
         } else {
             $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
+            if (($eventdetails->isEmpty())) {
+                $error_event_details = "Oops... couldn't find that event";
+                return view('eventdetails_default', ['error_event_details' => $error_event_details]);
+            }
             $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
 
             $host_username = $eventdetails[0]->usernamehost;
@@ -101,6 +108,10 @@ class ShowEventDetailsController extends Controller
      */
     public function showEventDetailsLoggedIn($idevent) {
         $eventdetails = DB::table('eo')->where('idevent', $idevent)->get();
+        if (($eventdetails->isEmpty())) {
+            $error_event_details = "Oops... couldn't find that event";
+            return view('eventdetails_default', ['error_event_details' => $error_event_details]);
+        }
         $jumlahpartisipan = DB::table('partisipan')->where('idevent', $idevent)->count();
 
         $host_username = $eventdetails[0]->usernamehost;

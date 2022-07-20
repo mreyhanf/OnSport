@@ -20,9 +20,12 @@ class BrowseController extends Controller
     }
 
 
-    public function showBrowse()
+    public function showBrowse(Request $request)
     {
         if (Auth::check()) { // for logged in users
+            if ($request->is('browse/filter')) {
+                return redirect('/browse');
+            }
             // BrowseController::browseLoggedIn();
             $user = Auth::user();
             $events = DB::table('eo')->where('tanggal', '>=', Carbon::today())->where('usernamehost','<>', $user->username)->orderBy('tanggal', 'asc')->orderBy('jam', 'asc')->get();
@@ -46,7 +49,7 @@ class BrowseController extends Controller
 
     public function filterBrowse(Request $request)
     {
-        if (Auth::check()) { // for loggen in users
+        if (Auth::check()) { // for logged in users
             // BrowseController::filterLoggedIn($request);
             $kategori = $request->kategori;
             $events = []; //deklarasi variabel
@@ -109,7 +112,7 @@ class BrowseController extends Controller
                 array_push($jumlahpartisipan, $partisipan);
             }
 
-            return redirect()->back()->with([ 'events' => $events, 'jumlahpartisipan' => $jumlahpartisipan]);
+            return redirect('/browse')->with([ 'events' => $events, 'jumlahpartisipan' => $jumlahpartisipan]);
             } else { // for guests
                 // same as filterLoggedIn except it does not check the usernamehost
                 $kategori = $request->kategori;
@@ -173,7 +176,7 @@ class BrowseController extends Controller
                     array_push($jumlahpartisipan, $partisipan);
                 }
 
-                return redirect()->back()->with([ 'events' => $events, 'jumlahpartisipan' => $jumlahpartisipan]);
+                return redirect('/browse')->with([ 'events' => $events, 'jumlahpartisipan' => $jumlahpartisipan]);
             }
     }
 
@@ -262,6 +265,6 @@ class BrowseController extends Controller
             array_push($jumlahpartisipan, $partisipan);
         }
 
-        return redirect()->back()->with([ 'events' => $events, 'jumlahpartisipan' => $jumlahpartisipan]);
+        return redirect('/browse')->with([ 'events' => $events, 'jumlahpartisipan' => $jumlahpartisipan]);
     }
 }

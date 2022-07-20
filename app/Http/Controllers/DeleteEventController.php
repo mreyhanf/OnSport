@@ -33,10 +33,10 @@ class DeleteEventController extends Controller
 
             DeleteEventController::createDeleteEventNotification($request->idevent, $partisipan, $calonpartisipan, $judulevent, $usernamepg);
 
-            return redirect('/myevents/created');
-        } else {
-            return redirect()->back();
+            return redirect('/my-events/created');
         }
+
+        return redirect('/my-events/created');
 
     }
 

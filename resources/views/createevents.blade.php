@@ -7,6 +7,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a class="btn btn-outline-dark mt-1" href="/home" style="margin-bottom: 15px">
+                <span class="oi oi-arrow-left" title="arrow left" aria-hidden="true" style="margin-right: 5px"></span> Back
+            </a>
             <div class="card">
                 <div class="card-header" style="font-weight: 900">Create Event</div>
                     <div class="card-body">

@@ -4,6 +4,19 @@
 
 @section('content')
 
+@if (isset($error_event_details))
+    <div style="padding: 15px;
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%); text-align: center">
+        <div style="font-size: 20px; color: rgb(88, 88, 88); margin-bottom: 15px">{{ $error_event_details }}</div>
+        <span style="font-size: 20px; color: rgb(88, 88, 88)">Return to <a href="/home" class="text-decoration-none">Home</a></span>
+    </div>
+@else
+
 @php
     $link_back1 = 'https://onsport.web.id/event/details/' . $eventdetails[0]->idevent;
     $link_back2 = 'http://onsport.web.id/event/details/' . $eventdetails[0]->idevent;
@@ -214,5 +227,7 @@
 @endforeach
 
 </div>
+@endif
+
 @endsection
 

@@ -13,7 +13,7 @@
 @section('content')
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
-    <a class="navbar-brand">Your Events</a>
+        <a class="navbar-brand"><h3 style="padding: 8px; font-weight: bold; margin-bottom: 0px">My Events</h3></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMyEvents" aria-controls="navbarMyEvents" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

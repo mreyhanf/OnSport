@@ -39,7 +39,7 @@ class CancelParticipationFromAnEventController extends Controller
             CancelParticipationFromAnEventController::setStatusPenerimaan($idevent);
         }
 
-        return redirect()->back();
+        return redirect('/event/details/' . $request->idevent);
 
     }
 

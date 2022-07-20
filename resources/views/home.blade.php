@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row mb-4">
         <div class="col-sm-12 col-md-8 col-lg-10">
-            <h3 style="padding: 8px; font-weight: bold;">Active Events</h3>
+            <h3 style="padding: 8px; font-weight: bold; margin-bottom: 0px">Active Events</h3>
         </div>
         <div class="col-sm-12 col-md-4 col-lg-2">
             <a href="/create-event" class="btn btn-primary rounded-pill" style="width: 109px; margin-top: 7px; margin-bottom: 5px">
